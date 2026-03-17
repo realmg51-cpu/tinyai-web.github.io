@@ -1,66 +1,39 @@
 # Site settings
-title: "TinyAI"
-title_en: "TinyAI - Rule-Based AI Learning Project"
-title_vi: "TinyAI - Dự án học AI dựa trên luật"
-email: your-email@example.com
-description: >-
-  A lightweight, rule-based AI written in C# for learning purposes.
-  Self-contained executables for Windows, macOS, and Linux.
-baseurl: ""
-url: "https://tinyai.github.io"
+title: "TinyAI - Rule-Based AI Learning Project"
+description: "A lightweight, rule-based AI written in C# for learning purposes"
+url: "https://realmg51-cpu.github.io"
+baseurl: "/p.tinyai"
+
+# Author
+author: realmg51-cpu
 github_username: realmg51-cpu
-discord_invite: "https://discord.gg/your-invite-link"
+discord_invite: "https://discord.gg/4D8fxxRDR"
 
 # Build settings
+markdown: kramdown
 theme: minima
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
   - jekyll-sitemap
-  - jekyll-paginate
+  - jekyll-include-cache
 
-# Markdown settings
-markdown: kramdown
-highlighter: rouge
-kramdown:
-  input: GFM
-  syntax_highlighter: rouge
-
-# Sass/SCSS
-sass:
-  sass_dir: _sass
-  style: compressed
-
-# Multilingual
-languages: ["en", "vi"]
-default_lang: "en"
-
-# Navigation
-header_pages:
-  - about.md
-
-# Collections
-collections:
-  releases:
-    output: true
-    permalink: /releases/:path/
+# Exclude
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - .gitignore
 
 # Defaults
 defaults:
   - scope:
       path: ""
-      type: "posts"
-    values:
-      layout: "post"
-  - scope:
-      path: ""
+      type: "pages"
     values:
       layout: "default"
       lang: "en"
-  - scope:
-      path: "vi"
-    values:
-      lang: "vi"
 
-# Version info
+# Version
 latest_version: "v1.2.0"
