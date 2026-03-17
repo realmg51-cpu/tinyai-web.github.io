@@ -1,0 +1,296 @@
+# Navigation
+nav:
+  home:
+    en: "Home"
+    vi: "Trang chủ"
+  features:
+    en: "Features"
+    vi: "Tính năng"
+  download:
+    en: "Download"
+    vi: "Tải xuống"
+  howitworks:
+    en: "How it works"
+    vi: "Cách hoạt động"
+  github:
+    en: "GitHub"
+    vi: "GitHub"
+  releases:
+    en: "Releases"
+    vi: "Bản phát hành"
+  discord:
+    en: "Discord"
+    vi: "Discord"
+
+# Hero Section
+hero:
+  title:
+    en: "🤖 TinyAI"
+    vi: "🤖 TinyAI"
+  subtitle:
+    en: "A lightweight, rule-based AI written in C# for learning purposes"
+    vi: "Một AI đơn giản dựa trên luật lệ, được viết bằng C# cho mục đích học tập"
+  view_github:
+    en: "View on GitHub"
+    vi: "Xem trên GitHub"
+  join_discord:
+    en: "Join Discord"
+    vi: "Tham gia Discord"
+  all_releases:
+    en: "All Releases"
+    vi: "Tất cả bản phát hành"
+
+# Download Section
+download:
+  title:
+    en: "📥 Download TinyAI {version}"
+    vi: "📥 Tải TinyAI {version}"
+  subtitle:
+    en: "Self-contained executables - No .NET runtime required"
+    vi: "Tệp thực thi độc lập - Không cần cài đặt .NET"
+  detecting_os:
+    en: "Detecting your operating system..."
+    vi: "Đang phát hiện hệ điều hành của bạn..."
+  button:
+    en: "Download"
+    vi: "Tải xuống"
+  recommended:
+    en: "✨ Recommended for your system"
+    vi: "✨ Đề xuất cho hệ thống của bạn"
+  other_versions:
+    en: "View other versions (v1.1.0, v1.0.1, v1.0.0)"
+    vi: "Xem các phiên bản khác (v1.1.0, v1.0.1, v1.0.0)"
+  checksums:
+    en: "Checksums"
+    vi: "Mã kiểm tra"
+  instructions:
+    en: "How to use"
+    vi: "Hướng dẫn sử dụng"
+  windows_instruction:
+    en: "Double-click the .exe file to run"
+    vi: "Nhấp đúp vào file .exe để chạy"
+  linux_instruction:
+    en: "Open terminal and run:"
+    vi: "Mở terminal và chạy:"
+  macos_instruction:
+    en: "Open terminal and run:"
+    vi: "Mở terminal và chạy:"
+
+# OS Detection
+os:
+  windows:
+    en: "✓ Windows detected - Showing recommended downloads for your system"
+    vi: "✓ Đã phát hiện Windows - Hiển thị bản tải phù hợp"
+  macos:
+    en: "✓ macOS detected - Showing recommended downloads for your system"
+    vi: "✓ Đã phát hiện macOS - Hiển thị bản tải phù hợp"
+  linux:
+    en: "✓ Linux detected - Showing recommended downloads for your system"
+    vi: "✓ Đã phát hiện Linux - Hiển thị bản tải phù hợp"
+  unknown:
+    en: "ℹ️ OS could not be detected - Showing all downloads"
+    vi: "ℹ️ Không thể phát hiện hệ điều hành - Hiển thị tất cả"
+
+# Architecture
+arch:
+  x64:
+    en: "64-bit"
+    vi: "64-bit"
+  arm64:
+    en: "ARM64"
+    vi: "ARM64"
+  intel:
+    en: "Intel"
+    vi: "Intel"
+  apple_silicon:
+    en: "Apple Silicon"
+    vi: "Apple Silicon"
+  unknown:
+    en: "Architecture unknown"
+    vi: "Không xác định kiến trúc"
+
+# Features Section
+features:
+  title:
+    en: "✨ Features"
+    vi: "✨ Tính năng"
+  rule_based:
+    title:
+      en: "Rule-Based AI"
+      vi: "AI dựa trên luật"
+    desc:
+      en: "Simple pattern matching with predefined rules for learning AI concepts"
+      vi: "So khớp mẫu đơn giản với các luật có sẵn để học khái niệm AI"
+  csharp:
+    title:
+      en: "Written in C#"
+      vi: "Viết bằng C#"
+    desc:
+      en: "Clean, educational code to help you understand AI fundamentals"
+      vi: "Mã nguồn sạch, mang tính giáo dục giúp bạn hiểu nền tảng AI"
+  docker:
+    title:
+      en: "Docker Support"
+      vi: "Hỗ trợ Docker"
+    desc:
+      en: "Easy deployment with Docker containers for any platform"
+      vi: "Triển khai dễ dàng với container Docker trên mọi nền tảng"
+  extendable:
+    title:
+      en: "Extendable"
+      vi: "Có thể mở rộng"
+    desc:
+      en: "Add your own rules and patterns to customize the AI behavior"
+      vi: "Thêm luật và mẫu của riêng bạn để tùy chỉnh hành vi AI"
+
+# How It Works Section
+howitworks:
+  title:
+    en: "💡 How It Works"
+    vi: "💡 Cách hoạt động"
+  step1:
+    title:
+      en: "Pattern Matching"
+      vi: "So khớp mẫu"
+    desc:
+      en: "Input is processed and matched against predefined patterns"
+      vi: "Đầu vào được xử lý và so khớp với các mẫu đã định nghĩa"
+  step2:
+    title:
+      en: "Rule Application"
+      vi: "Áp dụng luật"
+    desc:
+      en: "Responses are triggered based on matching rules"
+      vi: "Phản hồi được kích hoạt dựa trên các luật phù hợp"
+  step3:
+    title:
+      en: "Easy Extension"
+      vi: "Mở rộng dễ dàng"
+    desc:
+      en: "The system can be extended by adding new rules"
+      vi: "Hệ thống có thể được mở rộng bằng cách thêm luật mới"
+
+# Quick Start Section
+quickstart:
+  title:
+    en: "🚀 Quick Start"
+    vi: "🚀 Bắt đầu nhanh"
+  code:
+    en: |-
+      # Clone the repository
+      git clone https://github.com/realmg51-cpu/TinyAI.git
+      
+      # Navigate to directory
+      cd TinyAI
+      
+      # Build and run with .NET
+      dotnet run
+      
+      # Or run the downloaded executable
+      # Windows: .\TinyAI-win-x64-v1.2.0.exe
+      # Linux/macOS: chmod +x TinyAI-linux-x64-v1.2.0 && ./TinyAI-linux-x64-v1.2.0
+      
+      # Or use Docker
+      docker build -t tinyai .
+      docker run --rm tinyai
+    vi: |-
+      # Clone repository
+      git clone https://github.com/realmg51-cpu/TinyAI.git
+      
+      # Vào thư mục
+      cd TinyAI
+      
+      # Build và chạy với .NET
+      dotnet run
+      
+      # Hoặc chạy file đã tải
+      # Windows: .\TinyAI-win-x64-v1.2.0.exe
+      # Linux/macOS: chmod +x TinyAI-linux-x64-v1.2.0 && ./TinyAI-linux-x64-v1.2.0
+      
+      # Hoặc dùng Docker
+      docker build -t tinyai .
+      docker run --rm tinyai
+
+# Footer
+footer:
+  license:
+    en: "Apache 2.0 License"
+    vi: "Giấy phép Apache 2.0"
+  copyright:
+    en: "© 2026 TinyAI - {license}"
+    vi: "© 2026 TinyAI - {license}"
+  resources:
+    en: "Resources"
+    vi: "Tài nguyên"
+  releases:
+    en: "Releases"
+    vi: "Bản phát hành"
+  issues:
+    en: "Issues"
+    vi: "Vấn đề"
+  community:
+    en: "Community"
+    vi: "Cộng đồng"
+  discussions:
+    en: "Discussions"
+    vi: "Thảo luận"
+  legal:
+    en: "Legal"
+    vi: "Pháp lý"
+  privacy:
+    en: "Privacy"
+    vi: "Riêng tư"
+  made_with:
+    en: "✨ Made with ❤️ for the TinyAI community"
+    vi: "✨ Được tạo bằng ❤️ cho cộng đồng TinyAI"
+
+# Download Status
+download_status:
+  starting:
+    en: "Starting download..."
+    vi: "Đang bắt đầu tải..."
+  downloading:
+    en: "Downloading..."
+    vi: "Đang tải..."
+  complete:
+    en: "Download complete!"
+    vi: "Tải hoàn tất!"
+  error:
+    en: "Download failed. Please try again."
+    vi: "Tải thất bại. Vui lòng thử lại."
+  retry:
+    en: "Retry"
+    vi: "Thử lại"
+
+# Buttons
+buttons:
+  copy:
+    en: "Copy"
+    vi: "Sao chép"
+  copied:
+    en: "Copied!"
+    vi: "Đã sao chép!"
+  close:
+    en: "Close"
+    vi: "Đóng"
+
+# Errors
+errors:
+  network:
+    en: "Network error. Please check your connection."
+    vi: "Lỗi mạng. Vui lòng kiểm tra kết nối."
+  not_found:
+    en: "File not found."
+    vi: "Không tìm thấy file."
+  server:
+    en: "Server error. Please try again later."
+    vi: "Lỗi máy chủ. Vui lòng thử lại sau."
+
+# Loading
+loading:
+  default:
+    en: "Loading..."
+    vi: "Đang tải..."
+  releases:
+    en: "Loading releases..."
+    vi: "Đang tải bản phát hành..."
