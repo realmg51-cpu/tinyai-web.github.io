@@ -1,0 +1,24 @@
+# Steps data for How It Works section
+- number: 1
+  title:
+    en: "Pattern Matching"
+    vi: "So khớp mẫu"
+  description:
+    en: "Input is processed and matched against predefined patterns"
+    vi: "Đầu vào được xử lý và so khớp với các mẫu đã định nghĩa"
+
+- number: 2
+  title:
+    en: "Rule Application"
+    vi: "Áp dụng luật"
+  description:
+    en: "Responses are triggered based on matching rules"
+    vi: "Phản hồi được kích hoạt dựa trên các luật phù hợp"
+
+- number: 3
+  title:
+    en: "Easy Extension"
+    vi: "Mở rộng dễ dàng"
+  description:
+    en: "The system can be extended by adding new rules"
+    vi: "Hệ thống có thể được mở rộng bằng cách thêm luật mới"
