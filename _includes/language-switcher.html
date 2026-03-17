@@ -23,7 +23,6 @@
     padding: 0.25rem;
     border-radius: 12px;
     border: 1px solid var(--border-color);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 .lang-btn {
@@ -35,7 +34,7 @@
     border-radius: 8px;
     font-size: 0.9rem;
     font-weight: 500;
-    transition: all 0.3s ease;
+    transition: all 0.3s;
     display: flex;
     align-items: center;
     gap: 0.5rem;
@@ -61,55 +60,28 @@
     .lang-btn .lang-name {
         display: inline;
     }
-    
     .lang-btn .lang-code {
         display: none;
-    }
-}
-
-@media (max-width: 767px) {
-    .lang-btn {
-        padding: 0.5rem 0.8rem;
-    }
-    
-    .lang-btn .lang-code {
-        display: inline;
-        font-weight: 600;
     }
 }
 </style>
 
 <script>
 function switchLanguage(lang) {
-    // Update active buttons
     document.querySelectorAll('.lang-btn').forEach(btn => {
-        if (btn.dataset.lang === lang) {
-            btn.classList.add('active');
-        } else {
-            btn.classList.remove('active');
-        }
+        btn.classList.toggle('active', btn.dataset.lang === lang);
     });
-    
-    // Update HTML lang attribute
     document.documentElement.lang = lang;
-    
-    // Save to localStorage
     localStorage.setItem('preferred-language', lang);
-    
-    // Reload page to apply translations
     location.reload();
 }
 
-// Initialize language on page load
 document.addEventListener('DOMContentLoaded', () => {
     const savedLang = localStorage.getItem('preferred-language');
     const browserLang = navigator.language.startsWith('vi') ? 'vi' : 'en';
     const defaultLang = savedLang || browserLang;
-    
-    // Set HTML lang attribute
     document.documentElement.lang = defaultLang;
     
-    // Update active buttons
     document.querySelectorAll('.lang-btn').forEach(btn => {
         if (btn.dataset.lang === defaultLang) {
             btn.classList.add('active');
