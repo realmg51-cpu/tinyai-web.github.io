@@ -1,0 +1,17 @@
+<header>
+    <nav class="navbar">
+        <div class="nav-brand">
+            <i class="fas fa-robot"></i>
+            <a href="{{ '/' | relative_url }}">TinyAI</a>
+        </div>
+        
+        <div class="nav-controls">
+            {% include language-switcher.html %}
+            
+            <button id="theme-toggle" class="theme-btn">
+                <i class="fas fa-moon"></i>
+                <i class="fas fa-sun"></i>
+            </button>
+        </div>
+    </nav>
+</header>
