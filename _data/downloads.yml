@@ -1,391 +1,52 @@
-# TinyAI Downloads Data
-# Auto-generated from GitHub Releases
-# Last updated: 2026-03-17
-
-# Latest version info
 latest:
   version: "v1.2.0"
   release_date: "2026-03-17"
-  release_notes: "Update dependabot.yml, Add Random Responses (Tested)"
 
-# All versions
 versions:
   - version: "v1.2.0"
-    tag: "v1.2.0"
     date: "2026-03-17"
-    prerelease: false
-    whats_new:
-      en:
-        - "Update dependabot.yml"
-        - "Add Random Responses (Tested)"
-      vi:
-        - "Cập nhật dependabot.yml"
-        - "Thêm phản hồi ngẫu nhiên (Đã test)"
-    checksums:
-      linux_arm64: "bc698ed0a6c9da36fbc002aa654e2fa8fccf6b3d8f03f9a68a81560fe188311a"
-      linux_x64: "c652a735f451e8af6b0ecb052e409c08fdd92a6ffd2e593adfd89534d94131e2"
-      osx_arm64: "b239326ed3561881a9c91af26db469ad280d8496852dc216c070c8290b653a7e"
-      osx_x64: "737e6a81f6228018e32e8c3ea7a4b30d33c14d2481d69186dd673ae413a85a1c"
-      win_arm64: "ed0a3b34bd7d2a6ef6b0729f67149b288195009edbc385ae01f3dc65de4db491"
-      win_x64: "415e180a1db5e4c6bd5a41204f7169ca12198db8bdc72f9cfde8a6395d16ba08"
     files:
       windows:
         x64:
           name: "TinyAI-win-x64-v1.2.0.exe"
           size: "65 MB"
-          size_bytes: 68157440
           url: "https://github.com/realmg51-cpu/TinyAI/releases/download/v1.2.0/TinyAI-win-x64-v1.2.0.exe"
-          checksum: "415e180a1db5e4c6bd5a41204f7169ca12198db8bdc72f9cfde8a6395d16ba08"
           architecture: "x64"
-          os: "windows"
-          format: "exe"
         arm64:
           name: "TinyAI-win-arm64-v1.2.0.exe"
           size: "73 MB"
-          size_bytes: 76546048
           url: "https://github.com/realmg51-cpu/TinyAI/releases/download/v1.2.0/TinyAI-win-arm64-v1.2.0.exe"
-          checksum: "ed0a3b34bd7d2a6ef6b0729f67149b288195009edbc385ae01f3dc65de4db491"
           architecture: "arm64"
-          os: "windows"
-          format: "exe"
       linux:
         x64:
           name: "TinyAI-linux-x64-v1.2.0"
           size: "64 MB"
-          size_bytes: 67108864
           url: "https://github.com/realmg51-cpu/TinyAI/releases/download/v1.2.0/TinyAI-linux-x64-v1.2.0"
-          checksum: "c652a735f451e8af6b0ecb052e409c08fdd92a6ffd2e593adfd89534d94131e2"
           architecture: "x64"
-          os: "linux"
-          format: "binary"
         arm64:
           name: "TinyAI-linux-arm64-v1.2.0"
           size: "71 MB"
-          size_bytes: 74448896
           url: "https://github.com/realmg51-cpu/TinyAI/releases/download/v1.2.0/TinyAI-linux-arm64-v1.2.0"
-          checksum: "bc698ed0a6c9da36fbc002aa654e2fa8fccf6b3d8f03f9a68a81560fe188311a"
           architecture: "arm64"
-          os: "linux"
-          format: "binary"
       macos:
         x64:
           name: "TinyAI-osx-x64-v1.2.0"
           size: "64 MB"
-          size_bytes: 67108864
           url: "https://github.com/realmg51-cpu/TinyAI/releases/download/v1.2.0/TinyAI-osx-x64-v1.2.0"
-          checksum: "737e6a81f6228018e32e8c3ea7a4b30d33c14d2481d69186dd673ae413a85a1c"
           architecture: "x64"
-          os: "macos"
-          format: "binary"
         arm64:
           name: "TinyAI-osx-arm64-v1.2.0"
           size: "71 MB"
-          size_bytes: 74448896
           url: "https://github.com/realmg51-cpu/TinyAI/releases/download/v1.2.0/TinyAI-osx-arm64-v1.2.0"
-          checksum: "b239326ed3561881a9c91af26db469ad280d8496852dc216c070c8290b653a7e"
           architecture: "arm64"
-          os: "macos"
-          format: "binary"
 
-  - version: "v1.1.0"
-    tag: "v1.1.0"
-    date: "2026-03-15"
-    prerelease: false
-    whats_new:
-      en:
-        - "Update release.yml"
-        - "Delete .test directory"
-        - "Update ChatCore.Test.cs"
-        - "Create ResponseTest.cs"
-        - "Add multiple CI/CD improvements"
-      vi:
-        - "Cập nhật release.yml"
-        - "Xóa thư mục .test"
-        - "Cập nhật ChatCore.Test.cs"
-        - "Tạo ResponseTest.cs"
-        - "Thêm nhiều cải tiến CI/CD"
-    checksums:
-      linux_arm64: "c135bc83f7ae56cea174d2902c2870e8aa79b44605cbb364a32967eff0790b1e"
-      linux_x64: "7e136cc5df2d777f970602302725d79b71863d3dffa666a6ac3cae4534dec296"
-      osx_arm64: "799d4b50a1aa1f7faf542144f21aa840a0e5b9cbeeec65ac682d68ea01c5fbed"
-      osx_x64: "61e1be4928020946bfadfaa6281c09f6bb0ee22e37e889bd8f2e26a678016598"
-      win_arm64: "c20a0199033c369dfa98212c7e18377bf47c475dc82e5e8a0c0cfca6e49a32fa"
-      win_x64: "7bed59aa33586f705385aec811ddc6598c39274504d6c8a6301db992e041240b"
-    files:
-      windows:
-        x64:
-          name: "TinyAI-win-x64-v1.1.0.exe"
-          size: "65 MB"
-          size_bytes: 68157440
-          url: "https://github.com/realmg51-cpu/TinyAI/releases/download/v1.1.0/TinyAI-win-x64-v1.1.0.exe"
-          checksum: "7bed59aa33586f705385aec811ddc6598c39274504d6c8a6301db992e041240b"
-          architecture: "x64"
-          os: "windows"
-          format: "exe"
-        arm64:
-          name: "TinyAI-win-arm64-v1.1.0.exe"
-          size: "73 MB"
-          size_bytes: 76546048
-          url: "https://github.com/realmg51-cpu/TinyAI/releases/download/v1.1.0/TinyAI-win-arm64-v1.1.0.exe"
-          checksum: "c20a0199033c369dfa98212c7e18377bf47c475dc82e5e8a0c0cfca6e49a32fa"
-          architecture: "arm64"
-          os: "windows"
-          format: "exe"
-      linux:
-        x64:
-          name: "TinyAI-linux-x64-v1.1.0"
-          size: "64 MB"
-          size_bytes: 67108864
-          url: "https://github.com/realmg51-cpu/TinyAI/releases/download/v1.1.0/TinyAI-linux-x64-v1.1.0"
-          checksum: "7e136cc5df2d777f970602302725d79b71863d3dffa666a6ac3cae4534dec296"
-          architecture: "x64"
-          os: "linux"
-          format: "binary"
-        arm64:
-          name: "TinyAI-linux-arm64-v1.1.0"
-          size: "71 MB"
-          size_bytes: 74448896
-          url: "https://github.com/realmg51-cpu/TinyAI/releases/download/v1.1.0/TinyAI-linux-arm64-v1.1.0"
-          checksum: "c135bc83f7ae56cea174d2902c2870e8aa79b44605cbb364a32967eff0790b1e"
-          architecture: "arm64"
-          os: "linux"
-          format: "binary"
-      macos:
-        x64:
-          name: "TinyAI-osx-x64-v1.1.0"
-          size: "64 MB"
-          size_bytes: 67108864
-          url: "https://github.com/realmg51-cpu/TinyAI/releases/download/v1.1.0/TinyAI-osx-x64-v1.1.0"
-          checksum: "61e1be4928020946bfadfaa6281c09f6bb0ee22e37e889bd8f2e26a678016598"
-          architecture: "x64"
-          os: "macos"
-          format: "binary"
-        arm64:
-          name: "TinyAI-osx-arm64-v1.1.0"
-          size: "71 MB"
-          size_bytes: 74448896
-          url: "https://github.com/realmg51-cpu/TinyAI/releases/download/v1.1.0/TinyAI-osx-arm64-v1.1.0"
-          checksum: "799d4b50a1aa1f7faf542144f21aa840a0e5b9cbeeec65ac682d68ea01c5fbed"
-          architecture: "arm64"
-          os: "macos"
-          format: "binary"
-
-  - version: "v1.0.1"
-    tag: "v1.0.1"
-    date: "2026-03-14"
-    prerelease: false
-    whats_new:
-      en:
-        - "Update README.md"
-        - "Update Build-Release.yml"
-        - "Update Main.cs"
-      vi:
-        - "Cập nhật README.md"
-        - "Cập nhật Build-Release.yml"
-        - "Cập nhật Main.cs"
-    checksums:
-      linux_arm64: "0a2febb31a23b58433f6fd40b77fe1cb63000fd9ad910f682b53961869e9c254"
-      linux_x64: "0a156674c92f6991aa2a9b7245ab2012d22a91d3558598a249b72caa53158aee"
-      osx_arm64: "9b8aa7e8960ced41c45b9e99fff141a67cafd0d859b2dd29309d915b1f0d0620"
-      osx_x64: "2e75103f977e66b10e5be2a7b57b1b0642bc034decb9a1340307f21faf44dbda"
-      win_arm64: "31f99c5afd86823c74f6edb52447185b0c0349b807eb21dee955f95380d4dba8"
-      win_x64: "12f0d1ae18ad3c45a0425166f34dc243233d7cfef44cb28bf65c9e333aaab3ef"
-    files:
-      windows:
-        x64:
-          name: "TinyAI-win-x64-v1.0.1.exe"
-          size: "65 MB"
-          size_bytes: 68157440
-          url: "https://github.com/realmg51-cpu/TinyAI/releases/download/v1.0.1/TinyAI-win-x64-v1.0.1.exe"
-          checksum: "12f0d1ae18ad3c45a0425166f34dc243233d7cfef44cb28bf65c9e333aaab3ef"
-          architecture: "x64"
-          os: "windows"
-          format: "exe"
-        arm64:
-          name: "TinyAI-win-arm64-v1.0.1.exe"
-          size: "73 MB"
-          size_bytes: 76546048
-          url: "https://github.com/realmg51-cpu/TinyAI/releases/download/v1.0.1/TinyAI-win-arm64-v1.0.1.exe"
-          checksum: "31f99c5afd86823c74f6edb52447185b0c0349b807eb21dee955f95380d4dba8"
-          architecture: "arm64"
-          os: "windows"
-          format: "exe"
-      linux:
-        x64:
-          name: "TinyAI-linux-x64-v1.0.1"
-          size: "64 MB"
-          size_bytes: 67108864
-          url: "https://github.com/realmg51-cpu/TinyAI/releases/download/v1.0.1/TinyAI-linux-x64-v1.0.1"
-          checksum: "0a156674c92f6991aa2a9b7245ab2012d22a91d3558598a249b72caa53158aee"
-          architecture: "x64"
-          os: "linux"
-          format: "binary"
-        arm64:
-          name: "TinyAI-linux-arm64-v1.0.1"
-          size: "71 MB"
-          size_bytes: 74448896
-          url: "https://github.com/realmg51-cpu/TinyAI/releases/download/v1.0.1/TinyAI-linux-arm64-v1.0.1"
-          checksum: "0a2febb31a23b58433f6fd40b77fe1cb63000fd9ad910f682b53961869e9c254"
-          architecture: "arm64"
-          os: "linux"
-          format: "binary"
-      macos:
-        x64:
-          name: "TinyAI-osx-x64-v1.0.1"
-          size: "64 MB"
-          size_bytes: 67108864
-          url: "https://github.com/realmg51-cpu/TinyAI/releases/download/v1.0.1/TinyAI-osx-x64-v1.0.1"
-          checksum: "2e75103f977e66b10e5be2a7b57b1b0642bc034decb9a1340307f21faf44dbda"
-          architecture: "x64"
-          os: "macos"
-          format: "binary"
-        arm64:
-          name: "TinyAI-osx-arm64-v1.0.1"
-          size: "71 MB"
-          size_bytes: 74448896
-          url: "https://github.com/realmg51-cpu/TinyAI/releases/download/v1.0.1/TinyAI-osx-arm64-v1.0.1"
-          checksum: "9b8aa7e8960ced41c45b9e99fff141a67cafd0d859b2dd29309d915b1f0d0620"
-          architecture: "arm64"
-          os: "macos"
-          format: "binary"
-
-  - version: "v1.0.0"
-    tag: "v1.0.0"
-    date: "2026-03-12"
-    prerelease: false
-    whats_new:
-      en:
-        - "Initial release"
-      vi:
-        - "Bản phát hành đầu tiên"
-    checksums:
-      linux_arm64: "86e8797d64120c05f1350587eb7fda71e35162615eb30140e31a698faad88946"
-      linux_x64: "5c25b2b034947934fcdf07937f83e59a00800647f48b1751b9ac1959d0baaf96"
-      osx_arm64: "46bfb79378343fe5ea76c65bf92fb82d353dc2fd42c02478f78da8b836935be8"
-      osx_x64: "bbe2c396af1a51c4648e005dd0df195d71e039f3fe6f6d9c679a9987642360fc"
-      win_arm64: "65bcb9e07006c5b36ae9d691aef61303515a8909bc01d35ce07ca6a973ecc80f"
-      win_x64: "8019ea04e2b6881f73b5ef2604a6979826d91b5fb1d541fb35a49cb0fc49b32e"
-    files:
-      windows:
-        x64:
-          name: "TinyAI-win-x64-v1.0.0.exe"
-          size: "65 MB"
-          size_bytes: 68157440
-          url: "https://github.com/realmg51-cpu/TinyAI/releases/download/v1.0.0/TinyAI-win-x64-v1.0.0.exe"
-          checksum: "8019ea04e2b6881f73b5ef2604a6979826d91b5fb1d541fb35a49cb0fc49b32e"
-          architecture: "x64"
-          os: "windows"
-          format: "exe"
-        arm64:
-          name: "TinyAI-win-arm64-v1.0.0.exe"
-          size: "73 MB"
-          size_bytes: 76546048
-          url: "https://github.com/realmg51-cpu/TinyAI/releases/download/v1.0.0/TinyAI-win-arm64-v1.0.0.exe"
-          checksum: "65bcb9e07006c5b36ae9d691aef61303515a8909bc01d35ce07ca6a973ecc80f"
-          architecture: "arm64"
-          os: "windows"
-          format: "exe"
-      linux:
-        x64:
-          name: "TinyAI-linux-x64-v1.0.0"
-          size: "64 MB"
-          size_bytes: 67108864
-          url: "https://github.com/realmg51-cpu/TinyAI/releases/download/v1.0.0/TinyAI-linux-x64-v1.0.0"
-          checksum: "5c25b2b034947934fcdf07937f83e59a00800647f48b1751b9ac1959d0baaf96"
-          architecture: "x64"
-          os: "linux"
-          format: "binary"
-        arm64:
-          name: "TinyAI-linux-arm64-v1.0.0"
-          size: "71 MB"
-          size_bytes: 74448896
-          url: "https://github.com/realmg51-cpu/TinyAI/releases/download/v1.0.0/TinyAI-linux-arm64-v1.0.0"
-          checksum: "86e8797d64120c05f1350587eb7fda71e35162615eb30140e31a698faad88946"
-          architecture: "arm64"
-          os: "linux"
-          format: "binary"
-      macos:
-        x64:
-          name: "TinyAI-osx-x64-v1.0.0"
-          size: "64 MB"
-          size_bytes: 67108864
-          url: "https://github.com/realmg51-cpu/TinyAI/releases/download/v1.0.0/TinyAI-osx-x64-v1.0.0"
-          checksum: "bbe2c396af1a51c4648e005dd0df195d71e039f3fe6f6d9c679a9987642360fc"
-          architecture: "x64"
-          os: "macos"
-          format: "binary"
-        arm64:
-          name: "TinyAI-osx-arm64-v1.0.0"
-          size: "71 MB"
-          size_bytes: 74448896
-          url: "https://github.com/realmg51-cpu/TinyAI/releases/download/v1.0.0/TinyAI-osx-arm64-v1.0.0"
-          checksum: "46bfb79378343fe5ea76c65bf92fb82d353dc2fd42c02478f78da8b836935be8"
-          architecture: "arm64"
-          os: "macos"
-          format: "binary"
-
-# Statistics
-statistics:
-  total_versions: 4
-  total_downloads: 24  # 4 versions * 6 files
-  latest_version: "v1.2.0"
-  earliest_version: "v1.0.0"
-  total_size_mb: 1632  # Tổng size các file (MB)
-  total_size_gb: 1.59  # Tổng size (GB)
-
-# OS Support
 os_support:
-  - name: "Windows"
+  - name: "windows"
     icon: "fab fa-windows"
-    architectures: ["x64", "arm64"]
-    formats: ["exe"]
     color: "#00a4ef"
-  - name: "Linux"
+  - name: "linux"
     icon: "fab fa-linux"
-    architectures: ["x64", "arm64"]
-    formats: ["binary"]
     color: "#fcc624"
-  - name: "macOS"
+  - name: "macos"
     icon: "fab fa-apple"
-    architectures: ["x64", "arm64"]
-    formats: ["binary"]
     color: "#000000"
-
-# Download instructions
-instructions:
-  windows:
-    en: "Double-click the .exe file to run"
-    vi: "Nhấp đúp vào file .exe để chạy"
-  linux:
-    en: |-
-      chmod +x TinyAI-linux-x64-v1.2.0
-      ./TinyAI-linux-x64-v1.2.0
-    vi: |-
-      chmod +x TinyAI-linux-x64-v1.2.0
-      ./TinyAI-linux-x64-v1.2.0
-  macos:
-    en: |-
-      chmod +x TinyAI-osx-x64-v1.2.0
-      ./TinyAI-osx-x64-v1.2.0
-    vi: |-
-      chmod +x TinyAI-osx-x64-v1.2.0
-      ./TinyAI-osx-x64-v1.2.0
-
-# Features
-features:
-  - name: "Self-contained Executable"
-    icon: "fas fa-box"
-    en: "No .NET runtime required"
-    vi: "Không cần cài đặt .NET"
-  - name: "Cross-platform"
-    icon: "fas fa-globe"
-    en: "Works on Windows, Linux, and macOS"
-    vi: "Hoạt động trên Windows, Linux và macOS"
-  - name: "Lightweight"
-    icon: "fas fa-feather"
-    en: "Small download size (64-73 MB)"
-    vi: "Dung lượng nhỏ (64-73 MB)"
-  - name: "Open Source"
-    icon: "fas fa-code"
-    en: "Apache 2.0 License"
-    vi: "Giấy phép Apache 2.0"
