@@ -1,28 +1,4 @@
-# Navigation
-nav:
-  home:
-    en: "Home"
-    vi: "Trang chủ"
-  features:
-    en: "Features"
-    vi: "Tính năng"
-  download:
-    en: "Download"
-    vi: "Tải xuống"
-  howitworks:
-    en: "How it works"
-    vi: "Cách hoạt động"
-  github:
-    en: "GitHub"
-    vi: "GitHub"
-  releases:
-    en: "Releases"
-    vi: "Bản phát hành"
-  discord:
-    en: "Discord"
-    vi: "Discord"
-
-# Hero Section
+# Hero
 hero:
   title:
     en: "🤖 TinyAI"
@@ -40,7 +16,19 @@ hero:
     en: "All Releases"
     vi: "Tất cả bản phát hành"
 
-# Download Section
+# Navigation
+nav:
+  features:
+    en: "Features"
+    vi: "Tính năng"
+  download:
+    en: "Download"
+    vi: "Tải xuống"
+  howitworks:
+    en: "How it works"
+    vi: "Cách hoạt động"
+
+# Download
 download:
   title:
     en: "📥 Download TinyAI {version}"
@@ -54,62 +42,11 @@ download:
   button:
     en: "Download"
     vi: "Tải xuống"
-  recommended:
-    en: "✨ Recommended for your system"
-    vi: "✨ Đề xuất cho hệ thống của bạn"
   other_versions:
-    en: "View other versions (v1.1.0, v1.0.1, v1.0.0)"
-    vi: "Xem các phiên bản khác (v1.1.0, v1.0.1, v1.0.0)"
-  checksums:
-    en: "Checksums"
-    vi: "Mã kiểm tra"
-  instructions:
-    en: "How to use"
-    vi: "Hướng dẫn sử dụng"
-  windows_instruction:
-    en: "Double-click the .exe file to run"
-    vi: "Nhấp đúp vào file .exe để chạy"
-  linux_instruction:
-    en: "Open terminal and run:"
-    vi: "Mở terminal và chạy:"
-  macos_instruction:
-    en: "Open terminal and run:"
-    vi: "Mở terminal và chạy:"
+    en: "View other versions"
+    vi: "Xem các phiên bản khác"
 
-# OS Detection
-os:
-  windows:
-    en: "✓ Windows detected - Showing recommended downloads for your system"
-    vi: "✓ Đã phát hiện Windows - Hiển thị bản tải phù hợp"
-  macos:
-    en: "✓ macOS detected - Showing recommended downloads for your system"
-    vi: "✓ Đã phát hiện macOS - Hiển thị bản tải phù hợp"
-  linux:
-    en: "✓ Linux detected - Showing recommended downloads for your system"
-    vi: "✓ Đã phát hiện Linux - Hiển thị bản tải phù hợp"
-  unknown:
-    en: "ℹ️ OS could not be detected - Showing all downloads"
-    vi: "ℹ️ Không thể phát hiện hệ điều hành - Hiển thị tất cả"
-
-# Architecture
-arch:
-  x64:
-    en: "64-bit"
-    vi: "64-bit"
-  arm64:
-    en: "ARM64"
-    vi: "ARM64"
-  intel:
-    en: "Intel"
-    vi: "Intel"
-  apple_silicon:
-    en: "Apple Silicon"
-    vi: "Apple Silicon"
-  unknown:
-    en: "Architecture unknown"
-    vi: "Không xác định kiến trúc"
-
-# Features Section
+# Features
 features:
   title:
     en: "✨ Features"
@@ -143,7 +80,7 @@ features:
       en: "Add your own rules and patterns to customize the AI behavior"
       vi: "Thêm luật và mẫu của riêng bạn để tùy chỉnh hành vi AI"
 
-# How It Works Section
+# How it works
 howitworks:
   title:
     en: "💡 How It Works"
@@ -170,7 +107,7 @@ howitworks:
       en: "The system can be extended by adding new rules"
       vi: "Hệ thống có thể được mở rộng bằng cách thêm luật mới"
 
-# Quick Start Section
+# Quick start
 quickstart:
   title:
     en: "🚀 Quick Start"
@@ -213,12 +150,9 @@ quickstart:
 
 # Footer
 footer:
-  license:
-    en: "Apache 2.0 License"
-    vi: "Giấy phép Apache 2.0"
   copyright:
-    en: "© 2026 TinyAI - {license}"
-    vi: "© 2026 TinyAI - {license}"
+    en: "© 2026 TinyAI - Apache 2.0 License"
+    vi: "© 2026 TinyAI - Giấy phép Apache 2.0"
   resources:
     en: "Resources"
     vi: "Tài nguyên"
@@ -237,60 +171,9 @@ footer:
   legal:
     en: "Legal"
     vi: "Pháp lý"
-  privacy:
-    en: "Privacy"
-    vi: "Riêng tư"
+  license:
+    en: "Apache 2.0 License"
+    vi: "Giấy phép Apache 2.0"
   made_with:
     en: "✨ Made with ❤️ for the TinyAI community"
     vi: "✨ Được tạo bằng ❤️ cho cộng đồng TinyAI"
-
-# Download Status
-download_status:
-  starting:
-    en: "Starting download..."
-    vi: "Đang bắt đầu tải..."
-  downloading:
-    en: "Downloading..."
-    vi: "Đang tải..."
-  complete:
-    en: "Download complete!"
-    vi: "Tải hoàn tất!"
-  error:
-    en: "Download failed. Please try again."
-    vi: "Tải thất bại. Vui lòng thử lại."
-  retry:
-    en: "Retry"
-    vi: "Thử lại"
-
-# Buttons
-buttons:
-  copy:
-    en: "Copy"
-    vi: "Sao chép"
-  copied:
-    en: "Copied!"
-    vi: "Đã sao chép!"
-  close:
-    en: "Close"
-    vi: "Đóng"
-
-# Errors
-errors:
-  network:
-    en: "Network error. Please check your connection."
-    vi: "Lỗi mạng. Vui lòng kiểm tra kết nối."
-  not_found:
-    en: "File not found."
-    vi: "Không tìm thấy file."
-  server:
-    en: "Server error. Please try again later."
-    vi: "Lỗi máy chủ. Vui lòng thử lại sau."
-
-# Loading
-loading:
-  default:
-    en: "Loading..."
-    vi: "Đang tải..."
-  releases:
-    en: "Loading releases..."
-    vi: "Đang tải bản phát hành..."
