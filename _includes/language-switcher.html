@@ -1,0 +1,67 @@
+<div class="language-switcher">
+    <button class="lang-btn {% if page.lang == 'en' or page.lang == nil %}active{% endif %}" 
+            onclick="switchLanguage('en')" 
+            data-lang="en">
+        EN
+    </button>
+    <button class="lang-btn {% if page.lang == 'vi' %}active{% endif %}" 
+            onclick="switchLanguage('vi')" 
+            data-lang="vi">
+        VI
+    </button>
+</div>
+
+<style>
+.language-switcher {
+    display: flex;
+    gap: 0.5rem;
+    background: var(--bg-primary);
+    padding: 0.25rem;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+.lang-btn {
+    padding: 0.5rem 1rem;
+    border: none;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+
+.lang-btn.active {
+    background: var(--primary-gradient);
+    color: white;
+}
+
+.lang-btn:hover:not(.active) {
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+}
+</style>
+
+<script>
+function switchLanguage(lang) {
+    // Update active buttons
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        if (btn.dataset.lang === lang) {
+            btn.classList.add('active');
+        } else {
+            btn.classList.remove('active');
+        }
+    });
+    
+    // Update HTML lang attribute
+    document.documentElement.lang = lang;
+    
+    // Save to localStorage
+    localStorage.setItem('language', lang);
+    
+    // Reload page to apply translations
+    location.reload();
+}
+</script>
