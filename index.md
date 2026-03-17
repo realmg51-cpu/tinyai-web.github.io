@@ -15,13 +15,13 @@ permalink: /
             </p>
             
             <div class="quick-actions">
-                <a href="https://github.com/realmg51-cpu/TinyAI" target="_blank" class="btn btn-primary">
+                <a href="https://github.com/{{ site.github_username }}/TinyAI" target="_blank" class="btn btn-primary">
                     <i class="fab fa-github"></i> <span data-i18n="hero.view_github">View on GitHub</span>
                 </a>
                 <a href="{{ site.discord_invite }}" target="_blank" class="btn btn-discord">
                     <i class="fab fa-discord"></i> <span data-i18n="hero.join_discord">Join Discord</span>
                 </a>
-                <a href="https://github.com/realmg51-cpu/TinyAI/releases" target="_blank" class="btn btn-outline">
+                <a href="https://github.com/{{ site.github_username }}/TinyAI/releases" target="_blank" class="btn btn-outline">
                     <i class="fas fa-download"></i> <span data-i18n="hero.all_releases">All Releases</span>
                 </a>
             </div>
@@ -46,7 +46,7 @@ permalink: /
 <section id="how-it-works" class="how-it-works">
     <div class="container">
         <h2 class="section-title" data-i18n="howitworks.title">💡 How It Works</h2>
-        {% include steps.html %}  <!-- Đảm bảo tên file là steps.html -->
+        {% include steps.html %}
     </div>
 </section>
 
@@ -56,13 +56,21 @@ permalink: /
         <h2 class="section-title" data-i18n="quickstart.title">🚀 Quick Start</h2>
         <div class="code-block">
             <pre><code id="quickstart-code" data-i18n="quickstart.code"># Clone the repository
-git clone https://github.com/realmg51-cpu/TinyAI.git
+git clone https://github.com/{{ site.github_username }}/TinyAI.git
 
 # Navigate to directory
 cd TinyAI
 
 # Build and run with .NET
-dotnet run</code></pre>
+dotnet run
+
+# Or run the downloaded executable
+# Windows: .\TinyAI-win-x64-v1.2.0.exe
+# Linux/macOS: chmod +x TinyAI-linux-x64-v1.2.0 && ./TinyAI-linux-x64-v1.2.0
+
+# Or use Docker
+docker build -t tinyai .
+docker run --rm tinyai</code></pre>
         </div>
     </div>
 </section>
