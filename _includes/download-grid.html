@@ -1,0 +1,31 @@
+{% assign version = include.version | default: site.latest_version %}
+{% assign release = site.data.downloads.versions | where: "version", version | first %}
+
+<div class="download-grid">
+  {% for os in release.files %}
+    {% for arch in os[1] %}
+      <div class="download-card" data-os="{{ os[0] }}" data-arch="{{ arch[1].architecture }}">
+        <div class="card-header" style="background: linear-gradient(135deg, {{ site.data.downloads.os_support | where: "name", os[0] | map: "color" | first }} 0%, #333 100%)">
+          <i class="{{ site.data.downloads.os_support | where: "name", os[0] | map: "icon" | first }}"></i>
+          <h3>{{ os[0] }}</h3>
+          <span class="arch-badge">{{ arch[1].architecture | upcase }}</span>
+        </div>
+        <div class="card-body">
+          <p class="file-name">{{ arch[1].name }}</p>
+          <p class="file-size">{{ arch[1].size }}</p>
+        </div>
+        <div class="card-footer">
+          <a href="{{ arch[1].url }}" class="download-btn" data-version="{{ version }}">
+            <i class="fas fa-download"></i>
+            <span>Download</span>
+          </a>
+        </div>
+      </div>
+    {% endfor %}
+  {% endfor %}
+</div>
+
+<div class="checksums" style="display: none;">
+  <h3>Checksums</h3>
+  <pre>{{ release.checksums | inspect }}</pre>
+</div>
