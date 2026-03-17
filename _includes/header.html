@@ -5,12 +5,25 @@
             <a href="{{ '/' | relative_url }}">TinyAI</a>
         </div>
         
+        <div class="nav-menu">
+            <ul class="nav-links">
+                <li><a href="#features" data-i18n="nav.features">Features</a></li>
+                <li><a href="#download" data-i18n="nav.download">Download</a></li>
+                <li><a href="#how-it-works" data-i18n="nav.howitworks">How it works</a></li>
+                <li><a href="https://github.com/{{ site.github_username }}/TinyAI" target="_blank">GitHub</a></li>
+            </ul>
+        </div>
+        
         <div class="nav-controls">
             {% include language-switcher.html %}
             
-            <button id="theme-toggle" class="theme-btn">
+            <button id="theme-toggle" class="theme-btn" aria-label="Toggle theme">
                 <i class="fas fa-moon"></i>
                 <i class="fas fa-sun"></i>
+            </button>
+            
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
             </button>
         </div>
     </nav>
