@@ -1,14 +1,10 @@
 {% assign steps = site.data.steps %}
 <div class="steps">
     {% for step in steps %}
-    <div class="step" data-aos="fade-up" data-aos-delay="{{ forloop.index | times: 200 }}">
+    <div class="step">
         <div class="step-number">{{ step.number }}</div>
-        <h3 data-i18n="howitworks.step{{ step.number }}.title">
-            {{ step.title[currentLang] | default: step.title.en }}
-        </h3>
-        <p data-i18n="howitworks.step{{ step.number }}.desc">
-            {{ step.description[currentLang] | default: step.description.en }}
-        </p>
+        <h3 data-i18n="howitworks.step{{ step.number }}.title">{{ step.title.en }}</h3>
+        <p data-i18n="howitworks.step{{ step.number }}.desc">{{ step.description.en }}</p>
     </div>
     {% endfor %}
 </div>
@@ -28,20 +24,13 @@
     border: 1px solid var(--border-color);
     border-radius: 24px;
     box-shadow: var(--card-shadow);
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
+    transition: all 0.3s;
 }
 
 .step:hover {
     transform: translateY(-8px);
     box-shadow: var(--card-shadow-hover);
     border-color: var(--accent-color);
-}
-
-.step:hover .step-number {
-    transform: scale(1.1);
-    box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
 }
 
 .step-number {
@@ -56,57 +45,15 @@
     font-size: 1.8rem;
     font-weight: 700;
     margin: 0 auto 1.5rem;
-    transition: all 0.3s ease;
-    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.2);
 }
 
 .step h3 {
     font-size: 1.3rem;
     margin-bottom: 1rem;
-    color: var(--text-primary);
 }
 
 .step p {
     color: var(--text-muted);
     line-height: 1.6;
-    font-size: 1rem;
-}
-
-/* Animation keyframes */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.step {
-    animation: fadeInUp 0.6s ease both;
-}
-
-.step:nth-child(1) { animation-delay: 0.2s; }
-.step:nth-child(2) { animation-delay: 0.4s; }
-.step:nth-child(3) { animation-delay: 0.6s; }
-
-/* Responsive */
-@media (max-width: 768px) {
-    .steps {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-    }
-    
-    .step {
-        padding: 1.5rem;
-    }
-    
-    .step-number {
-        width: 50px;
-        height: 50px;
-        font-size: 1.5rem;
-    }
 }
 </style>
