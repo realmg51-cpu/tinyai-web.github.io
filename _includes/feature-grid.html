@@ -1,0 +1,16 @@
+{% assign features = site.data.features %}
+<div class="features-grid">
+    {% for feature in features %}
+    <div class="feature-card" data-aos="fade-up" data-aos-delay="{{ forloop.index | times: 100 }}">
+        <div class="feature-icon">
+            <i class="{{ feature.icon }}"></i>
+        </div>
+        <h3 data-i18n="feature.{{ feature.id }}.title">
+            {{ feature.title[currentLang] | default: feature.title.en }}
+        </h3>
+        <p data-i18n="feature.{{ feature.id }}.desc">
+            {{ feature.description[currentLang] | default: feature.description.en }}
+        </p>
+    </div>
+    {% endfor %}
+</div>
