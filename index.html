@@ -8,44 +8,40 @@
     <!-- Fonts & Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <style>
         /* ===== VARIABLES ===== */
         :root {
-            /* Light theme - Màu sắc đẹp hơn */
+            /* Light theme */
             --bg-primary: #f8fafc;
             --bg-secondary: #ffffff;
-            --bg-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --bg-gradient: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 50%, #ec4899 100%);
             --text-primary: #1e293b;
             --text-secondary: #475569;
             --text-light: #94a3b8;
-            --accent-1: #3b82f6;
-            --accent-2: #8b5cf6;
-            --accent-3: #ec4899;
-            --accent-gradient: linear-gradient(135deg, #3b82f6, #8b5cf6);
             --card-bg: #ffffff;
             --card-border: rgba(0, 0, 0, 0.05);
             --card-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
             --hover-shadow: 0 30px 35px -10px rgba(59, 130, 246, 0.2);
-            --success: #10b981;
-            --warning: #f59e0b;
-            --error: #ef4444;
-            --code-bg: #1e293b;
+            --code-bg: #0f172a;
+            --code-text: #e2e8f0;
+            --accent-1: #3b82f6;
+            --accent-2: #8b5cf6;
+            --accent-3: #ec4899;
         }
 
         [data-theme="dark"] {
             --bg-primary: #0f172a;
             --bg-secondary: #1e293b;
-            --bg-gradient: linear-gradient(135deg, #4f46e5 0%, #7e22ce 100%);
             --text-primary: #f1f5f9;
             --text-secondary: #cbd5e1;
             --text-light: #64748b;
             --card-bg: #334155;
             --card-border: rgba(255, 255, 255, 0.05);
             --card-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
-            --hover-shadow: 0 30px 35px -10px rgba(79, 70, 229, 0.3);
+            --hover-shadow: 0 30px 35px -10px rgba(139, 92, 246, 0.3);
             --code-bg: #0f172a;
         }
 
@@ -98,14 +94,14 @@
             gap: 0.75rem;
             font-size: 1.5rem;
             font-weight: 800;
-            background: var(--accent-gradient);
+            background: var(--bg-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
         .logo i {
             font-size: 2rem;
-            background: var(--accent-gradient);
+            background: var(--bg-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -138,7 +134,7 @@
         }
 
         .theme-btn.active, .lang-btn.active {
-            background: var(--accent-gradient);
+            background: var(--bg-gradient);
             color: white;
         }
 
@@ -164,6 +160,7 @@
             max-width: 800px;
             margin: 0 auto;
             text-align: center;
+            animation: fadeInUp 1s ease;
         }
 
         .hero h1 {
@@ -171,7 +168,7 @@
             font-weight: 800;
             line-height: 1.2;
             margin-bottom: 1.5rem;
-            background: var(--accent-gradient);
+            background: var(--bg-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -203,7 +200,7 @@
         }
 
         .btn-primary {
-            background: var(--accent-gradient);
+            background: var(--bg-gradient);
             color: white;
             box-shadow: 0 10px 20px -5px rgba(59, 130, 246, 0.3);
         }
@@ -224,16 +221,6 @@
             transform: translateY(-2px);
         }
 
-        .btn-discord {
-            background: #5865F2;
-            color: white;
-        }
-
-        .btn-discord:hover {
-            background: #4752c4;
-            transform: translateY(-2px);
-        }
-
         /* ===== DOWNLOAD SECTION ===== */
         .download-section {
             padding: 4rem 0;
@@ -247,7 +234,7 @@
             font-weight: 700;
             text-align: center;
             margin-bottom: 1rem;
-            background: var(--accent-gradient);
+            background: var(--bg-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -263,7 +250,7 @@
             display: inline-flex;
             align-items: center;
             gap: 0.75rem;
-            background: var(--accent-gradient);
+            background: var(--bg-gradient);
             color: white;
             padding: 0.75rem 1.5rem;
             border-radius: 100px;
@@ -289,7 +276,16 @@
             transition: all 0.3s;
             position: relative;
             overflow: hidden;
+            animation: fadeInUp 0.8s ease;
+            animation-fill-mode: both;
         }
+
+        .download-card:nth-child(1) { animation-delay: 0.1s; }
+        .download-card:nth-child(2) { animation-delay: 0.2s; }
+        .download-card:nth-child(3) { animation-delay: 0.3s; }
+        .download-card:nth-child(4) { animation-delay: 0.4s; }
+        .download-card:nth-child(5) { animation-delay: 0.5s; }
+        .download-card:nth-child(6) { animation-delay: 0.6s; }
 
         .download-card:hover {
             transform: translateY(-5px);
@@ -305,7 +301,7 @@
             position: absolute;
             top: 1rem;
             right: 1rem;
-            background: var(--accent-gradient);
+            background: var(--bg-gradient);
             color: white;
             padding: 0.25rem 1rem;
             border-radius: 100px;
@@ -324,7 +320,7 @@
 
         .card-header i {
             font-size: 2rem;
-            background: var(--accent-gradient);
+            background: var(--bg-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -339,7 +335,7 @@
         }
 
         .file-name {
-            font-family: monospace;
+            font-family: 'Fira Code', monospace;
             font-size: 0.9rem;
             color: var(--text-secondary);
             margin-bottom: 0.5rem;
@@ -358,7 +354,7 @@
             gap: 0.5rem;
             width: 100%;
             padding: 0.875rem;
-            background: var(--accent-gradient);
+            background: var(--bg-gradient);
             color: white;
             text-decoration: none;
             border-radius: 100px;
@@ -408,7 +404,14 @@
             border: 1px solid var(--card-border);
             box-shadow: var(--card-shadow);
             transition: all 0.3s;
+            animation: fadeInUp 0.8s ease;
+            animation-fill-mode: both;
         }
+
+        .feature-card:nth-child(1) { animation-delay: 0.1s; }
+        .feature-card:nth-child(2) { animation-delay: 0.2s; }
+        .feature-card:nth-child(3) { animation-delay: 0.3s; }
+        .feature-card:nth-child(4) { animation-delay: 0.4s; }
 
         .feature-card:hover {
             transform: translateY(-5px) scale(1.02);
@@ -417,7 +420,7 @@
 
         .feature-card i {
             font-size: 2.5rem;
-            background: var(--accent-gradient);
+            background: var(--bg-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             margin-bottom: 1.5rem;
@@ -449,13 +452,18 @@
 
         .step {
             text-align: center;
-            position: relative;
+            animation: fadeInUp 0.8s ease;
+            animation-fill-mode: both;
         }
+
+        .step:nth-child(1) { animation-delay: 0.1s; }
+        .step:nth-child(2) { animation-delay: 0.2s; }
+        .step:nth-child(3) { animation-delay: 0.3s; }
 
         .step-number {
             width: 3rem;
             height: 3rem;
-            background: var(--accent-gradient);
+            background: var(--bg-gradient);
             color: white;
             border-radius: 100px;
             display: flex;
@@ -465,7 +473,7 @@
             margin: 0 auto 1.5rem;
         }
 
-        /* ===== CODE BLOCK ===== */
+        /* ===== CODE BLOCK WITH SYNTAX HIGHLIGHT ===== */
         .quick-start {
             padding: 4rem 0;
         }
@@ -473,34 +481,106 @@
         .code-block {
             background: var(--code-bg);
             border-radius: 1.5rem;
-            padding: 2rem;
+            padding: 1.5rem;
             margin-top: 2rem;
             position: relative;
-            overflow: hidden;
+            font-family: 'Fira Code', monospace;
+            border: 1px solid #334155;
+            box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.3);
         }
 
-        .code-block::before {
+        .code-block.terminal {
+            padding-top: 2.5rem;
+        }
+
+        .code-block.terminal::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: var(--accent-gradient);
+            top: 0.75rem;
+            left: 1rem;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ff5f56;
+            box-shadow: 20px 0 0 #ffbd2e, 40px 0 0 #27c93f;
+        }
+
+        .code-block-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #334155;
+        }
+
+        .code-block-title {
+            color: #94a3b8;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .copy-btn {
+            background: #2d3748;
+            color: #e2e8f0;
+            border: 1px solid #4a5568;
+            padding: 0.25rem 1rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .copy-btn:hover {
+            background: #4a5568;
+            color: white;
+        }
+
+        .copy-btn.copied {
+            background: #10b981;
+            border-color: #10b981;
+            color: white;
         }
 
         .code-block pre {
             margin: 0;
-            color: #e2e8f0;
-            font-family: 'Fira Code', monospace;
-            font-size: 0.9rem;
+            color: var(--code-text);
             line-height: 1.8;
+            font-size: 0.9rem;
             overflow-x: auto;
+            counter-reset: line;
         }
 
-        .code-block code {
-            color: #e2e8f0;
+        .code-block pre code {
+            display: block;
+            position: relative;
+            padding-left: 3rem;
+            counter-increment: line;
         }
+
+        .code-block pre code::before {
+            content: counter(line);
+            position: absolute;
+            left: 0;
+            color: #64748b;
+            width: 2rem;
+            text-align: right;
+            border-right: 1px solid #334155;
+            padding-right: 0.5rem;
+        }
+
+        /* Syntax Highlight Colors */
+        .code-block .command { color: #50fa7b; }      /* Xanh lá - lệnh */
+        .code-block .comment { color: #94a3b8; font-style: italic; }  /* Xám - comment */
+        .code-block .path { color: #8be9fd; text-decoration: underline; }  /* Xanh dương - đường dẫn */
+        .code-block .string { color: #f1fa8c; }       /* Vàng - string */
+        .code-block .number { color: #bd93f9; }       /* Tím - số */
 
         /* ===== FOOTER ===== */
         footer {
@@ -511,7 +591,7 @@
 
         .footer-content {
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
             flex-wrap: wrap;
             gap: 1rem;
@@ -550,32 +630,6 @@
             50% { transform: translateY(-10px); }
         }
 
-        .hero-content {
-            animation: fadeInUp 1s ease;
-        }
-
-        .feature-card {
-            animation: fadeInUp 0.8s ease;
-            animation-fill-mode: both;
-        }
-
-        .feature-card:nth-child(1) { animation-delay: 0.1s; }
-        .feature-card:nth-child(2) { animation-delay: 0.2s; }
-        .feature-card:nth-child(3) { animation-delay: 0.3s; }
-        .feature-card:nth-child(4) { animation-delay: 0.4s; }
-
-        .download-card {
-            animation: fadeInUp 0.8s ease;
-            animation-fill-mode: both;
-        }
-
-        .download-card:nth-child(1) { animation-delay: 0.1s; }
-        .download-card:nth-child(2) { animation-delay: 0.2s; }
-        .download-card:nth-child(3) { animation-delay: 0.3s; }
-        .download-card:nth-child(4) { animation-delay: 0.4s; }
-        .download-card:nth-child(5) { animation-delay: 0.5s; }
-        .download-card:nth-child(6) { animation-delay: 0.6s; }
-
         .btn:hover i {
             animation: float 1s ease infinite;
         }
@@ -594,6 +648,10 @@
             .footer-content {
                 flex-direction: column;
                 text-align: center;
+            }
+            
+            .code-block pre {
+                font-size: 0.8rem;
             }
         }
     </style>
@@ -641,10 +699,6 @@
                         <a href="https://github.com/realmg51-cpu/TinyAI" target="_blank" class="btn btn-primary">
                             <i class="fab fa-github"></i>
                             <span class="i18n" data-en="View on GitHub" data-vi="Xem trên GitHub">View on GitHub</span>
-                        </a>
-                        <a href="https://discord.gg/wbBCZkenT" target="_blank" class="btn btn-discord">
-                            <i class="fab fa-discord"></i>
-                            <span class="i18n" data-en="Join Discord" data-vi="Tham gia Discord">Join Discord</span>
                         </a>
                         <a href="#download" class="btn btn-secondary">
                             <i class="fas fa-download"></i>
@@ -866,27 +920,37 @@
             </div>
         </section>
 
-        <!-- Quick Start -->
+        <!-- Quick Start with Syntax Highlight -->
         <section class="quick-start">
             <div class="container">
                 <h2 class="section-title i18n" data-en="🚀 Quick Start" data-vi="🚀 Bắt đầu nhanh">🚀 Quick Start</h2>
-                <div class="code-block">
-                    <pre><code># Clone the repository
-git clone https://github.com/realmg51-cpu/TinyAI.git
+                
+                <div class="code-block terminal">
+                    <div class="code-block-header">
+                        <span class="code-block-title">Bash Terminal</span>
+                        <button class="copy-btn" onclick="copyCode(this)">
+                            <i class="fas fa-copy"></i>
+                            <span class="i18n" data-en="Copy" data-vi="Sao chép">Copy</span>
+                        </button>
+                    </div>
+                    <pre><code><span class="comment"># Clone the repository</span>
+<span class="command">git</span> clone <span class="path">https://github.com/realmg51-cpu/TinyAI.git</span>
 
-# Navigate to directory
-cd TinyAI
+<span class="comment"># Navigate to directory</span>
+<span class="command">cd</span> <span class="path">TinyAI</span>
 
-# Build and run with .NET
-dotnet run
+<span class="comment"># Build and run with .NET</span>
+<span class="command">dotnet</span> run
 
-# Or run the downloaded executable
-# Windows: .\TinyAI-win-x64-v1.2.0.exe
-# Linux/macOS: chmod +x TinyAI-linux-x64-v1.2.0 && ./TinyAI-linux-x64-v1.2.0
+<span class="comment"># Or run the downloaded executable</span>
+<span class="comment"># Windows:</span>
+.\<span class="path">TinyAI-win-x64-v1.2.0.exe</span>
+<span class="comment"># Linux/macOS:</span>
+<span class="command">chmod</span> +x <span class="path">TinyAI-linux-x64-v1.2.0</span> && ./<span class="path">TinyAI-linux-x64-v1.2.0</span>
 
-# Or use Docker
-docker build -t tinyai .
-docker run --rm tinyai</code></pre>
+<span class="comment"># Or use Docker</span>
+<span class="command">docker</span> build -t <span class="string">tinyai</span> .
+<span class="command">docker</span> run --rm <span class="string">tinyai</span></code></pre>
                 </div>
             </div>
         </section>
@@ -903,58 +967,96 @@ docker run --rm tinyai</code></pre>
                 </div>
                 <div class="footer-links">
                     <a href="https://github.com/realmg51-cpu/TinyAI" target="_blank"><i class="fab fa-github"></i></a>
-                    <a href="https://discord.gg/wbBCZkenT" target="_blank"><i class="fab fa-discord"></i></a>
                 </div>
             </div>
         </div>
     </footer>
 
     <script>
-        // Theme management
+        // ===== THEME MANAGEMENT =====
         function setTheme(theme) {
             document.documentElement.setAttribute('data-theme', theme);
             localStorage.setItem('theme', theme);
             
-            // Update active button
             document.querySelectorAll('.theme-btn').forEach(btn => {
                 btn.classList.remove('active');
             });
             document.querySelector(`.theme-btn[onclick="setTheme('${theme}')"]`).classList.add('active');
         }
 
-        // Language management
+        // ===== LANGUAGE MANAGEMENT =====
+        const translations = {
+            en: {
+                'Detecting your system...': 'Detecting your system...',
+                'Download': 'Download',
+                'Copy': 'Copy',
+                'View on GitHub': 'View on GitHub',
+                'Download TinyAI v1.2.0': '📥 Download TinyAI v1.2.0',
+                'Self-contained executables - No .NET runtime required': 'Self-contained executables - No .NET runtime required',
+                'View all versions (v1.1.0, v1.0.1, v1.0.0)': 'View all versions (v1.1.0, v1.0.1, v1.0.0)',
+                '✨ Features': '✨ Features',
+                '💡 How It Works': '💡 How It Works',
+                '🚀 Quick Start': '🚀 Quick Start',
+                'Apache 2.0 License': 'Apache 2.0 License'
+            },
+            vi: {
+                'Detecting your system...': 'Đang phát hiện hệ thống...',
+                'Download': 'Tải xuống',
+                'Copy': 'Sao chép',
+                'View on GitHub': 'Xem trên GitHub',
+                'Download TinyAI v1.2.0': '📥 Tải TinyAI v1.2.0',
+                'Self-contained executables - No .NET runtime required': 'Tệp thực thi độc lập - Không cần cài đặt .NET',
+                'View all versions (v1.1.0, v1.0.1, v1.0.0)': 'Xem tất cả phiên bản (v1.1.0, v1.0.1, v1.0.0)',
+                '✨ Features': '✨ Tính năng',
+                '💡 How It Works': '💡 Cách hoạt động',
+                '🚀 Quick Start': '🚀 Bắt đầu nhanh',
+                'Apache 2.0 License': 'Giấy phép Apache 2.0'
+            }
+        };
+
         function setLanguage(lang) {
-            // Update active button
             document.querySelectorAll('.lang-btn').forEach(btn => {
                 btn.classList.remove('active');
             });
             document.querySelector(`.lang-btn[onclick="setLanguage('${lang}')"]`).classList.add('active');
             
-            // Update all translatable elements
             document.querySelectorAll('.i18n').forEach(el => {
-                if (el.dataset[lang]) {
+                const key = el.getAttribute(`data-${lang}`);
+                if (key) {
                     if (el.children.length === 0) {
-                        el.textContent = el.dataset[lang];
+                        el.textContent = key;
                     } else {
-                        // For elements with children (like buttons with icons), update only text nodes
                         const textNode = Array.from(el.childNodes).find(node => node.nodeType === 3);
-                        if (textNode) {
-                            textNode.textContent = el.dataset[lang];
-                        }
+                        if (textNode) textNode.textContent = key;
                     }
                 }
             });
             
+            // Update OS message
+            const osMsg = document.getElementById('os-message');
+            if (osMsg) {
+                const os = detectOS();
+                const messages = {
+                    windows: { en: '✓ Windows detected', vi: '✓ Đã phát hiện Windows' },
+                    macos: { en: '✓ macOS detected', vi: '✓ Đã phát hiện macOS' },
+                    linux: { en: '✓ Linux detected', vi: '✓ Đã phát hiện Linux' },
+                    android: { en: '📱 Android detected - Download for PC later', vi: '📱 Đang dùng Android - Tải về máy tính sau nhé' },
+                    unknown: { en: 'ℹ️ Select your system manually', vi: 'ℹ️ Chọn hệ thống của bạn' }
+                };
+                osMsg.textContent = messages[os][lang];
+            }
+            
             localStorage.setItem('language', lang);
         }
 
-        // OS Detection
+        // ===== OS DETECTION =====
         function detectOS() {
             const userAgent = navigator.userAgent;
             const platform = navigator.platform;
             
             if (/Windows/.test(userAgent)) return 'windows';
             if (/Mac/.test(platform)) return 'macos';
+            if (/Android/.test(userAgent)) return 'android';
             if (/Linux/.test(platform)) return 'linux';
             return 'unknown';
         }
@@ -965,30 +1067,27 @@ docker run --rm tinyai</code></pre>
             return 'x64';
         }
 
-        // Highlight recommended download
         function highlightRecommended() {
             const os = detectOS();
             const arch = detectArch();
             const osMessage = document.getElementById('os-message');
+            const currentLang = document.querySelector('.lang-btn.active')?.textContent.toLowerCase() || 'en';
             
-            // Update OS message
             const messages = {
-                windows: { en: '✓ Windows detected - Showing recommended download', vi: '✓ Đã phát hiện Windows' },
-                macos: { en: '✓ macOS detected - Showing recommended download', vi: '✓ Đã phát hiện macOS' },
-                linux: { en: '✓ Linux detected - Showing recommended download', vi: '✓ Đã phát hiện Linux' },
+                windows: { en: '✓ Windows detected', vi: '✓ Đã phát hiện Windows' },
+                macos: { en: '✓ macOS detected', vi: '✓ Đã phát hiện macOS' },
+                linux: { en: '✓ Linux detected', vi: '✓ Đã phát hiện Linux' },
+                android: { en: '📱 Android detected - Download for PC later', vi: '📱 Đang dùng Android - Tải về máy tính sau nhé' },
                 unknown: { en: 'ℹ️ Select your system manually', vi: 'ℹ️ Chọn hệ thống của bạn' }
             };
             
-            const currentLang = document.querySelector('.lang-btn.active')?.textContent.toLowerCase() || 'en';
             osMessage.textContent = messages[os][currentLang];
             
-            // Hide all recommended badges first
             document.querySelectorAll('.recommended-badge').forEach(badge => {
                 badge.style.display = 'none';
             });
             
-            // Show recommended for matching OS and arch
-            if (os !== 'unknown') {
+            if (os !== 'unknown' && os !== 'android') {
                 document.querySelectorAll(`.download-card[data-os="${os}"][data-arch="${arch}"]`).forEach(card => {
                     const badge = card.querySelector('.recommended-badge');
                     if (badge) badge.style.display = 'block';
@@ -996,13 +1095,33 @@ docker run --rm tinyai</code></pre>
             }
         }
 
-        // Load saved preferences
+        // ===== COPY CODE FUNCTION =====
+        function copyCode(button) {
+            const codeBlock = button.closest('.code-block').querySelector('code');
+            const text = codeBlock.innerText;
+            
+            navigator.clipboard.writeText(text).then(() => {
+                const originalText = button.innerHTML;
+                button.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                button.classList.add('copied');
+                
+                setTimeout(() => {
+                    button.innerHTML = originalText;
+                    button.classList.remove('copied');
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy:', err);
+                alert('Failed to copy code');
+            });
+        }
+
+        // ===== INITIALIZE =====
         document.addEventListener('DOMContentLoaded', () => {
-            // Load theme
+            // Load saved theme
             const savedTheme = localStorage.getItem('theme') || 'light';
             setTheme(savedTheme);
             
-            // Load language
+            // Load saved language
             const savedLang = localStorage.getItem('language') || 'en';
             setLanguage(savedLang);
             
