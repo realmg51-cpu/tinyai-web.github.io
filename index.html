@@ -33,6 +33,10 @@
             --success: #10b981;
             --warning: #f59e0b;
             --error: #ef4444;
+            --terminal-green: #50fa7b;
+            --terminal-purple: #bd93f9;
+            --terminal-yellow: #f1fa8c;
+            --terminal-prompt: #8be9fd;
         }
 
         [data-theme="dark"] {
@@ -693,7 +697,7 @@
             margin: 0 auto 1.5rem;
         }
 
-        /* ===== CODE BLOCK WITH SYNTAX HIGHLIGHT ===== */
+        /* ===== QUICK START WITH TYPING EFFECT ===== */
         .quick-start {
             padding: 4rem 0;
         }
@@ -707,92 +711,233 @@
             font-family: 'Fira Code', monospace;
             border: 1px solid #334155;
             box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
         }
 
         .code-block.terminal {
-            padding-top: 2.5rem;
+            padding: 0;
+            overflow: hidden;
         }
 
-        .code-block.terminal::before {
-            content: '';
-            position: absolute;
-            top: 0.75rem;
-            left: 1rem;
+        /* Terminal Header */
+        .code-block-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 1.5rem;
+            background: rgba(0, 0, 0, 0.3);
+            border-bottom: 1px solid #334155;
+        }
+
+        .terminal-controls {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .terminal-control {
             width: 12px;
             height: 12px;
             border-radius: 50%;
-            background: #ff5f56;
-            box-shadow: 20px 0 0 #ffbd2e, 40px 0 0 #27c93f;
         }
 
-        .code-block-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 1px solid #334155;
+        .terminal-control.red {
+            background: #ff5f56;
+        }
+
+        .terminal-control.yellow {
+            background: #ffbd2e;
+        }
+
+        .terminal-control.green {
+            background: #27c93f;
         }
 
         .code-block-title {
             color: #94a3b8;
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            font-size: 0.85rem;
             font-family: 'Inter', sans-serif;
         }
 
-        .copy-btn {
-            background: #2d3748;
-            color: #e2e8f0;
-            border: 1px solid #4a5568;
-            padding: 0.25rem 1rem;
-            border-radius: 4px;
-            font-size: 0.8rem;
+        .terminal-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .terminal-btn {
+            background: transparent;
+            border: none;
+            color: #94a3b8;
+            padding: 0.25rem;
             cursor: pointer;
+            font-size: 0.9rem;
             transition: all 0.3s;
+            border-radius: 4px;
+        }
+
+        .terminal-btn:hover {
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Terminal Content */
+        .terminal-content {
+            padding: 1.5rem;
+            min-height: 300px;
+            position: relative;
+        }
+
+        .terminal-line {
+            margin-bottom: 0.75rem;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-            font-family: 'Inter', sans-serif;
+            gap: 0.75rem;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            animation: slideIn 0.3s ease;
         }
 
-        .copy-btn:hover {
-            background: #4a5568;
-            color: white;
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
         }
 
-        .copy-btn.copied {
-            background: #10b981;
-            border-color: #10b981;
-            color: white;
+        .prompt {
+            color: var(--terminal-prompt);
+            font-weight: 600;
+            min-width: 1.5rem;
         }
 
-        .code-block pre {
-            margin: 0;
+        .command-text {
+            color: var(--terminal-green);
+        }
+
+        .comment {
+            color: #94a3b8;
+            font-style: italic;
+            margin-left: 2.25rem;
+        }
+
+        .cursor {
+            color: var(--terminal-green);
+            animation: blink 1s infinite;
+            margin-left: 2px;
+            font-weight: 400;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        /* Terminal Progress */
+        .terminal-progress {
+            height: 3px;
+            background: #2d3748;
+            width: 100%;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--bg-gradient);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        /* Terminal Status */
+        .terminal-status {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.75rem 1.5rem;
+            background: rgba(0, 0, 0, 0.2);
+            border-top: 1px solid #334155;
+            font-size: 0.85rem;
+            color: #94a3b8;
+        }
+
+        .terminal-status i {
+            margin-right: 0.5rem;
+            color: var(--terminal-green);
+        }
+
+        .typing-speed {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        /* Terminal Success Message */
+        .terminal-success {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid var(--success);
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--success);
+            animation: fadeIn 0.5s ease;
+        }
+
+        .terminal-success i {
+            font-size: 1.25rem;
+        }
+
+        /* Static Code View (fallback) */
+        .static-view {
+            margin-top: 1rem;
+        }
+
+        .static-view pre {
+            margin: 1.5rem 0 0;
             color: var(--code-text);
             line-height: 1.8;
             font-size: 0.9rem;
             overflow-x: auto;
-            counter-reset: line;
+            padding: 0 1.5rem 1.5rem;
         }
 
-        .code-block pre code {
+        .static-view pre code {
             display: block;
-            position: relative;
-            padding-left: 3rem;
-            counter-increment: line;
         }
 
-        .code-block pre code::before {
-            content: counter(line);
-            position: absolute;
-            left: 0;
-            color: #64748b;
-            width: 2rem;
-            text-align: right;
-            border-right: 1px solid #334155;
-            padding-right: 0.5rem;
+        .static-view .command { color: var(--terminal-green); }
+        .static-view .comment { color: #94a3b8; font-style: italic; }
+        .static-view .path { color: var(--terminal-prompt); }
+
+        /* Speed Controls */
+        .speed-controls {
+            display: flex;
+            gap: 0.25rem;
+            margin-left: 0.5rem;
+        }
+
+        .speed-btn {
+            background: transparent;
+            border: none;
+            color: #94a3b8;
+            padding: 0.25rem 0.5rem;
+            font-size: 0.75rem;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+
+        .speed-btn:hover {
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .speed-btn.active {
+            color: var(--terminal-green);
+            background: rgba(80, 250, 123, 0.1);
         }
 
         /* Syntax Highlight Colors */
@@ -845,6 +990,11 @@
             }
         }
 
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
         @keyframes float {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-10px); }
@@ -870,10 +1020,6 @@
                 text-align: center;
             }
             
-            .code-block pre {
-                font-size: 0.8rem;
-            }
-
             .version-info {
                 flex-direction: column;
                 gap: 0.5rem;
@@ -882,16 +1028,14 @@
             .section-title {
                 font-size: 2rem;
             }
-        }
 
-        /* ===== CACHE INDICATOR ===== */
-        .cache-indicator {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.25rem;
-            font-size: 0.75rem;
-            color: var(--text-light);
-            margin-left: 0.5rem;
+            .terminal-line {
+                font-size: 0.85rem;
+            }
+
+            .terminal-content {
+                padding: 1rem;
+            }
         }
     </style>
 </head>
@@ -1105,17 +1249,136 @@
             </div>
         </section>
 
-        <!-- Quick Start with Syntax Highlight -->
+        <!-- Quick Start with Typing Effect -->
         <section class="quick-start">
             <div class="container">
                 <h2 class="section-title i18n" data-en="🚀 Quick Start" data-vi="🚀 Bắt đầu nhanh">🚀 Quick Start</h2>
                 
-                <div class="code-block terminal">
+                <!-- Terminal với Typing Effect -->
+                <div class="code-block terminal" id="typing-terminal">
                     <div class="code-block-header">
-                        <span class="code-block-title">Bash Terminal</span>
-                        <button class="copy-btn" onclick="copyCode(this)">
+                        <div class="terminal-controls">
+                            <span class="terminal-control red"></span>
+                            <span class="terminal-control yellow"></span>
+                            <span class="terminal-control green"></span>
+                        </div>
+                        <span class="code-block-title">bash - TinyAI Terminal</span>
+                        <div class="terminal-actions">
+                            <div class="speed-controls">
+                                <button class="speed-btn active" onclick="setTypingSpeed(1)" title="Normal speed">1x</button>
+                                <button class="speed-btn" onclick="setTypingSpeed(2)" title="Fast speed">2x</button>
+                                <button class="speed-btn" onclick="setTypingSpeed(3)" title="Instant">3x</button>
+                            </div>
+                            <button class="terminal-btn" onclick="restartTyping()" title="Replay typing">
+                                <i class="fas fa-redo-alt"></i>
+                            </button>
+                            <button class="terminal-btn copy-btn" onclick="copyAllCommands()" title="Copy all commands">
+                                <i class="fas fa-copy"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Terminal Content với Typing Effect -->
+                    <div class="terminal-content" id="terminal-content">
+                        <!-- Dòng 1: git clone -->
+                        <div class="terminal-line" id="terminal-line-1">
+                            <span class="prompt">$</span>
+                            <span class="command-text" id="command-1"></span>
+                            <span class="cursor" id="cursor-1"></span>
+                        </div>
+                        
+                        <!-- Dòng 2: cd TinyAI -->
+                        <div class="terminal-line" id="terminal-line-2" style="display: none;">
+                            <span class="prompt">$</span>
+                            <span class="command-text" id="command-2"></span>
+                            <span class="cursor" id="cursor-2"></span>
+                        </div>
+                        
+                        <!-- Dòng 3: dotnet run -->
+                        <div class="terminal-line" id="terminal-line-3" style="display: none;">
+                            <span class="prompt">$</span>
+                            <span class="command-text" id="command-3"></span>
+                            <span class="cursor" id="cursor-3"></span>
+                        </div>
+                        
+                        <!-- Comment Windows -->
+                        <div class="terminal-line" id="terminal-line-4" style="display: none;">
+                            <span class="comment"># Windows:</span>
+                        </div>
+                        
+                        <!-- Dòng 5: .\TinyAI-win-x64-v1.2.0.exe -->
+                        <div class="terminal-line" id="terminal-line-5" style="display: none;">
+                            <span class="prompt">></span>
+                            <span class="command-text" id="command-4"></span>
+                            <span class="cursor" id="cursor-4"></span>
+                        </div>
+                        
+                        <!-- Comment Linux/macOS -->
+                        <div class="terminal-line" id="terminal-line-6" style="display: none;">
+                            <span class="comment"># Linux/macOS:</span>
+                        </div>
+                        
+                        <!-- Dòng 7: chmod +x ... -->
+                        <div class="terminal-line" id="terminal-line-7" style="display: none;">
+                            <span class="prompt">$</span>
+                            <span class="command-text" id="command-5"></span>
+                            <span class="cursor" id="cursor-5"></span>
+                        </div>
+                        
+                        <!-- Comment Docker -->
+                        <div class="terminal-line" id="terminal-line-8" style="display: none;">
+                            <span class="comment"># Or use Docker</span>
+                        </div>
+                        
+                        <!-- Dòng 9: docker build -->
+                        <div class="terminal-line" id="terminal-line-9" style="display: none;">
+                            <span class="prompt">$</span>
+                            <span class="command-text" id="command-6"></span>
+                            <span class="cursor" id="cursor-6"></span>
+                        </div>
+                        
+                        <!-- Dòng 10: docker run -->
+                        <div class="terminal-line" id="terminal-line-10" style="display: none;">
+                            <span class="prompt">$</span>
+                            <span class="command-text" id="command-7"></span>
+                            <span class="cursor" id="cursor-7"></span>
+                        </div>
+                        
+                        <!-- Success message -->
+                        <div class="terminal-success" id="terminal-success" style="display: none;">
+                            <i class="fas fa-check-circle"></i>
+                            <span class="i18n" data-en="✨ TinyAI is ready! Type 'help' to start" 
+                                  data-vi="✨ TinyAI đã sẵn sàng! Gõ 'help' để bắt đầu">
+                                ✨ TinyAI is ready! Type 'help' to start
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <!-- Terminal Progress Bar -->
+                    <div class="terminal-progress" id="terminal-progress">
+                        <div class="progress-fill" id="progress-fill"></div>
+                    </div>
+                    
+                    <!-- Terminal Status -->
+                    <div class="terminal-status">
+                        <span id="typing-status">
+                            <i class="fas fa-terminal"></i>
+                            <span class="i18n" data-en="Typing in progress..." data-vi="Đang gõ lệnh...">Typing in progress...</span>
+                        </span>
+                        <span class="typing-speed">
+                            <i class="fas fa-tachometer-alt"></i>
+                            <span id="speed-indicator">Normal</span>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Static Code View (fallback) -->
+                <div class="code-block static-view" id="static-code" style="display: none;">
+                    <div class="code-block-header">
+                        <span class="code-block-title">Quick Start Commands</span>
+                        <button class="copy-btn" onclick="copyStaticCode()">
                             <i class="fas fa-copy"></i>
-                            <span class="i18n" data-en="Copy" data-vi="Sao chép">Copy</span>
+                            <span class="i18n" data-en="Copy All" data-vi="Sao chép tất cả">Copy All</span>
                         </button>
                     </div>
                     <pre><code><span class="comment"># Clone the repository</span>
@@ -1163,7 +1426,27 @@
         const GITHUB_API = `https://api.github.com/repos/${GITHUB_REPO}/releases/latest`;
         const CACHE_KEY = 'tinyai_release_cache';
         const CACHE_DURATION = 5 * 60 * 1000; // 5 phút
-        const GITHUB_TOKEN = null; // Thêm token nếu cần để tăng rate limit
+
+        // ===== TYPING EFFECT CONFIGURATION =====
+        const commands = [
+            { element: 'command-1', cursor: 'cursor-1', line: 'terminal-line-1', text: 'git clone https://github.com/realmg51-cpu/TinyAI.git' },
+            { element: 'command-2', cursor: 'cursor-2', line: 'terminal-line-2', text: 'cd TinyAI' },
+            { element: 'command-3', cursor: 'cursor-3', line: 'terminal-line-3', text: 'dotnet run' },
+            { element: 'command-4', cursor: 'cursor-4', line: 'terminal-line-5', text: '.\\TinyAI-win-x64-v1.2.0.exe' },
+            { element: 'command-5', cursor: 'cursor-5', line: 'terminal-line-7', text: 'chmod +x TinyAI-linux-x64-v1.2.0 && ./TinyAI-linux-x64-v1.2.0' },
+            { element: 'command-6', cursor: 'cursor-6', line: 'terminal-line-9', text: 'docker build -t tinyai .' },
+            { element: 'command-7', cursor: 'cursor-7', line: 'terminal-line-10', text: 'docker run --rm tinyai' }
+        ];
+
+        let currentCommand = 0;
+        let currentChar = 0;
+        let typingInterval;
+        let typingSpeed = 150; // ms per character (normal speed)
+        const speedLevels = {
+            1: 150, // Normal
+            2: 50,  // Fast
+            3: 10   // Instant
+        };
 
         // ===== PROGRESS BAR =====
         let progressInterval;
@@ -1195,7 +1478,6 @@
             const messageEl = document.getElementById('notification-message');
             const iconEl = document.getElementById('notification-icon');
             
-            // Set icon based on type
             const icons = {
                 success: 'fa-check-circle',
                 error: 'fa-exclamation-circle',
@@ -1211,6 +1493,153 @@
             setTimeout(() => {
                 notification.classList.remove('show');
             }, duration);
+        }
+
+        // ===== TYPING EFFECT FUNCTIONS =====
+        function startTyping() {
+            if (typingInterval) clearInterval(typingInterval);
+            
+            // Reset UI
+            document.querySelectorAll('[id^="terminal-line-"]').forEach(line => {
+                line.style.display = 'none';
+            });
+            document.getElementById('terminal-success').style.display = 'none';
+            
+            // Reset command texts
+            commands.forEach(cmd => {
+                document.getElementById(cmd.element).textContent = '';
+            });
+            
+            currentCommand = 0;
+            currentChar = 0;
+            
+            // Show first line
+            document.getElementById('terminal-line-1').style.display = 'flex';
+            document.getElementById('cursor-1').style.display = 'inline';
+            
+            // Start typing
+            typeNextChar();
+        }
+
+        function typeNextChar() {
+            if (currentCommand >= commands.length) {
+                // All commands typed
+                document.getElementById('terminal-success').style.display = 'flex';
+                document.getElementById('typing-status').innerHTML = '<i class="fas fa-check-circle"></i> <span class="i18n" data-en="Ready!" data-vi="Sẵn sàng!">Ready!</span>';
+                updateProgress(100);
+                return;
+            }
+
+            const cmd = commands[currentCommand];
+            const commandEl = document.getElementById(cmd.element);
+            const cursorEl = document.getElementById(cmd.cursor);
+            const text = cmd.text;
+
+            if (currentChar < text.length) {
+                // Type next character
+                commandEl.textContent += text[currentChar];
+                currentChar++;
+                
+                // Update progress
+                const totalChars = commands.reduce((sum, c) => sum + c.text.length, 0);
+                const typedChars = commands.slice(0, currentCommand).reduce((sum, c) => sum + c.text.length, 0) + currentChar;
+                const progress = (typedChars / totalChars) * 100;
+                updateProgress(progress);
+                
+                // Schedule next character
+                typingInterval = setTimeout(typeNextChar, typingSpeed);
+            } else {
+                // Move to next command
+                cursorEl.style.display = 'none';
+                currentCommand++;
+                currentChar = 0;
+                
+                if (currentCommand < commands.length) {
+                    // Show next line
+                    const nextLineId = commands[currentCommand].line;
+                    document.getElementById(nextLineId).style.display = 'flex';
+                    
+                    // Show cursor for next line
+                    const nextCursor = commands[currentCommand].cursor;
+                    document.getElementById(nextCursor).style.display = 'inline';
+                    
+                    // Continue typing
+                    typingInterval = setTimeout(typeNextChar, typingSpeed * 2); // Pause between commands
+                } else {
+                    // All commands completed
+                    typeNextChar(); // This will trigger the completion
+                }
+            }
+        }
+
+        function updateProgress(percent) {
+            const progressFill = document.getElementById('progress-fill');
+            progressFill.style.width = percent + '%';
+        }
+
+        function setTypingSpeed(level) {
+            typingSpeed = speedLevels[level];
+            
+            // Update active button
+            document.querySelectorAll('.speed-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector(`.speed-btn[onclick="setTypingSpeed(${level})"]`).classList.add('active');
+            
+            // Update indicator
+            const speedNames = { 1: 'Normal', 2: 'Fast', 3: 'Instant' };
+            document.getElementById('speed-indicator').textContent = speedNames[level];
+            
+            // Restart typing with new speed
+            restartTyping();
+        }
+
+        function restartTyping() {
+            if (typingInterval) clearTimeout(typingInterval);
+            startTyping();
+        }
+
+        function copyAllCommands() {
+            const fullText = commands.map(cmd => cmd.text).join('\n');
+            
+            if (!navigator.clipboard) {
+                const textArea = document.createElement('textarea');
+                textArea.value = fullText;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                showNotification('All commands copied!', 'success', 1500);
+                return;
+            }
+            
+            navigator.clipboard.writeText(fullText).then(() => {
+                showNotification('All commands copied!', 'success', 1500);
+            }).catch(() => {
+                showNotification('Failed to copy', 'error');
+            });
+        }
+
+        function copyStaticCode() {
+            const codeBlock = document.querySelector('#static-code pre');
+            const text = codeBlock.innerText;
+            
+            if (!navigator.clipboard) {
+                const textArea = document.createElement('textarea');
+                textArea.value = text;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                showNotification('Copied!', 'success', 1500);
+                return;
+            }
+            
+            navigator.clipboard.writeText(text).then(() => {
+                showNotification('Copied!', 'success', 1500);
+            }).catch(() => {
+                showNotification('Failed to copy', 'error');
+            });
         }
 
         // ===== CACHE MANAGEMENT =====
@@ -1248,12 +1677,11 @@
             }
         }
 
-        // ===== DEEP ARCHITECTURE SCANNING (nhanh hơn) =====
+        // ===== DEEP ARCHITECTURE SCANNING =====
         function scanArchitecture() {
             const ua = navigator.userAgent;
             const platform = navigator.platform;
             
-            // Cache results trong session
             if (sessionStorage.getItem('arch_scan')) {
                 return JSON.parse(sessionStorage.getItem('arch_scan'));
             }
@@ -1262,7 +1690,6 @@
             let osVersion = '';
             let arch = 'x64';
             
-            // Phát hiện OS
             if (/Windows/.test(ua)) {
                 os = 'windows';
                 const winMatch = ua.match(/Windows NT (\d+\.\d+)/);
@@ -1293,13 +1720,12 @@
                 }
             }
             
-            // Phát hiện kiến trúc
             if (/ARM|aarch64|Apple Silicon/.test(ua)) {
                 arch = 'arm64';
             } else if (/x64|Win64|x86_64/.test(ua)) {
                 arch = 'x64';
             } else if (/WOW64/.test(ua)) {
-                arch = 'x64'; // Windows 32-bit app on 64-bit
+                arch = 'x64';
             }
             
             const result = { os, arch, osVersion };
@@ -1307,12 +1733,11 @@
             return result;
         }
 
-        // ===== FETCH LATEST RELEASE (tối ưu tốc độ) =====
+        // ===== FETCH LATEST RELEASE =====
         async function fetchLatestRelease() {
             const releaseInfo = document.getElementById('release-info');
             const downloadGrid = document.getElementById('download-grid');
             
-            // Thử lấy từ cache trước
             const cached = getCachedRelease();
             if (cached) {
                 releaseInfo.innerHTML = `
@@ -1334,33 +1759,21 @@
                     </a>
                 `;
                 
-                // Render cards từ cache
                 const assets = parseAssets(cached);
                 renderDownloadCards(assets);
-                
-                // Fetch trong background để cập nhật
                 fetchInBackground();
                 return;
             }
             
-            // Không có cache, show skeleton và fetch
             startProgress();
             
             try {
-                const headers = {};
-                if (GITHUB_TOKEN) {
-                    headers['Authorization'] = `token ${GITHUB_TOKEN}`;
-                }
-                
-                const response = await fetch(GITHUB_API, { headers });
+                const response = await fetch(GITHUB_API);
                 if (!response.ok) throw new Error('Failed to fetch release');
                 
                 const release = await response.json();
-                
-                // Cache kết quả
                 setCachedRelease(release);
                 
-                // Cập nhật UI
                 document.getElementById('latest-version').innerHTML = `
                     <i class="fas fa-tag"></i>
                     <span>${release.tag_name}</span>
@@ -1391,7 +1804,6 @@
                 console.error('Error fetching release:', error);
                 completeProgress();
                 
-                // Thử dùng cache cũ nếu có
                 const oldCache = localStorage.getItem(CACHE_KEY);
                 if (oldCache) {
                     const { data } = JSON.parse(oldCache);
@@ -1424,33 +1836,23 @@
                         </span>
                     `;
                     showNotification('Failed to fetch latest release', 'error');
-                    
-                    // Show fallback cards
                     showFallbackCards();
                 }
             }
         }
 
-        // ===== FETCH TRONG BACKGROUND =====
         async function fetchInBackground() {
             try {
-                const headers = {};
-                if (GITHUB_TOKEN) {
-                    headers['Authorization'] = `token ${GITHUB_TOKEN}`;
-                }
-                
-                const response = await fetch(GITHUB_API, { headers });
+                const response = await fetch(GITHUB_API);
                 if (!response.ok) return;
                 
                 const release = await response.json();
                 const cached = getCachedRelease();
                 
-                // Nếu có version mới hơn
                 if (cached && cached.tag_name !== release.tag_name) {
                     setCachedRelease(release);
                     showNotification(`✨ New version ${release.tag_name} available!`, 'info', 5000);
                     
-                    // Cập nhật UI nhẹ nhàng
                     const releaseInfo = document.getElementById('release-info');
                     releaseInfo.innerHTML = `
                         <span class="version-tag">
@@ -1471,7 +1873,6 @@
             }
         }
 
-        // ===== PARSE ASSETS =====
         function parseAssets(release) {
             if (!release || !release.assets) return [];
             
@@ -1522,7 +1923,6 @@
             }).filter(asset => asset.isExecutable);
         }
 
-        // ===== FALLBACK CARDS =====
         function showFallbackCards() {
             const fallbackAssets = [
                 { os: 'windows', arch: 'x64', name: 'TinyAI-win-x64.exe', size: '~65 MB', url: '#' },
@@ -1536,7 +1936,6 @@
             renderDownloadCards(fallbackAssets);
         }
 
-        // ===== RENDER DOWNLOAD CARDS (tối ưu) =====
         function renderDownloadCards(assets) {
             const grid = document.getElementById('download-grid');
             const { os: userOS, arch: userArch } = scanArchitecture();
@@ -1553,7 +1952,6 @@
                 macos: 'macOS'
             };
             
-            // Sắp xếp: recommended lên đầu
             const sortedAssets = [...assets].sort((a, b) => {
                 const aRec = a.os === userOS && a.arch === userArch ? -1 : 0;
                 const bRec = b.os === userOS && b.arch === userArch ? -1 : 0;
@@ -1562,7 +1960,7 @@
             
             grid.innerHTML = sortedAssets.map((asset, index) => {
                 const isRecommended = asset.os === userOS && asset.arch === userArch;
-                const animationDelay = index * 0.05; // Giảm delay để hiện nhanh hơn
+                const animationDelay = index * 0.05;
                 
                 return `
                     <div class="download-card ${isRecommended ? 'recommended' : ''}" 
@@ -1587,7 +1985,6 @@
             }).join('');
         }
 
-        // ===== UPDATE SYSTEM INFO =====
         function updateSystemInfo() {
             const { os, arch, osVersion } = scanArchitecture();
             const osMessage = document.getElementById('os-message');
@@ -1665,38 +2062,6 @@
             localStorage.setItem('language', lang);
         }
 
-        // ===== COPY CODE =====
-        function copyCode(button) {
-            const codeBlock = button.closest('.code-block').querySelector('code');
-            const text = codeBlock.innerText;
-            
-            if (!navigator.clipboard) {
-                const textArea = document.createElement('textarea');
-                textArea.value = text;
-                document.body.appendChild(textArea);
-                textArea.select();
-                document.execCommand('copy');
-                document.body.removeChild(textArea);
-                showNotification('Copied!', 'success', 1500);
-                return;
-            }
-            
-            navigator.clipboard.writeText(text).then(() => {
-                const originalText = button.innerHTML;
-                button.innerHTML = '<i class="fas fa-check"></i> Copied!';
-                button.classList.add('copied');
-                
-                showNotification('Copied to clipboard!', 'success', 1500);
-                
-                setTimeout(() => {
-                    button.innerHTML = originalText;
-                    button.classList.remove('copied');
-                }, 1500);
-            }).catch(() => {
-                showNotification('Failed to copy', 'error');
-            });
-        }
-
         // ===== SMOOTH SCROLL =====
         function setupSmoothScroll() {
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -1710,21 +2075,18 @@
             });
         }
 
-        // ===== PRELOAD RELEASE (chạy ngay khi có thể) =====
+        // ===== PRELOAD RELEASE =====
         function preloadRelease() {
-            // Prefetch DNS
             const link = document.createElement('link');
             link.rel = 'dns-prefetch';
             link.href = 'https://api.github.com';
             document.head.appendChild(link);
             
-            // Preconnect
             const preconnect = document.createElement('link');
             preconnect.rel = 'preconnect';
             preconnect.href = 'https://api.github.com';
             document.head.appendChild(preconnect);
             
-            // Bắt đầu fetch ngay
             setTimeout(() => fetchLatestRelease(), 100);
         }
 
@@ -1741,10 +2103,13 @@
             // Setup smooth scroll
             setupSmoothScroll();
             
-            // Update system info (nhanh)
+            // Update system info
             updateSystemInfo();
             
-            // Preload và fetch release (tối ưu)
+            // Start typing effect
+            startTyping();
+            
+            // Preload và fetch release
             preloadRelease();
         });
     </script>
