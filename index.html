@@ -4,60 +4,651 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TinyAI - Rule-Based AI Learning Project</title>
-    <link rel="stylesheet" href="style.css">
-    <!-- Font Awesome for icons -->
+    
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        /* ===== VARIABLES ===== */
+        :root {
+            /* Light theme - Màu sắc đẹp hơn */
+            --bg-primary: #f8fafc;
+            --bg-secondary: #ffffff;
+            --bg-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --text-primary: #1e293b;
+            --text-secondary: #475569;
+            --text-light: #94a3b8;
+            --accent-1: #3b82f6;
+            --accent-2: #8b5cf6;
+            --accent-3: #ec4899;
+            --accent-gradient: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            --card-bg: #ffffff;
+            --card-border: rgba(0, 0, 0, 0.05);
+            --card-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
+            --hover-shadow: 0 30px 35px -10px rgba(59, 130, 246, 0.2);
+            --success: #10b981;
+            --warning: #f59e0b;
+            --error: #ef4444;
+            --code-bg: #1e293b;
+        }
+
+        [data-theme="dark"] {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-gradient: linear-gradient(135deg, #4f46e5 0%, #7e22ce 100%);
+            --text-primary: #f1f5f9;
+            --text-secondary: #cbd5e1;
+            --text-light: #64748b;
+            --card-bg: #334155;
+            --card-border: rgba(255, 255, 255, 0.05);
+            --card-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+            --hover-shadow: 0 30px 35px -10px rgba(79, 70, 229, 0.3);
+            --code-bg: #0f172a;
+        }
+
+        /* ===== RESET & BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--card-border);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        [data-theme="dark"] header {
+            background: rgba(30, 41, 59, 0.8);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .logo i {
+            font-size: 2rem;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .controls {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .theme-toggle, .lang-toggle {
+            display: flex;
+            gap: 0.25rem;
+            background: var(--bg-primary);
+            padding: 0.25rem;
+            border-radius: 100px;
+            border: 1px solid var(--card-border);
+        }
+
+        .theme-btn, .lang-btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            background: transparent;
+            color: var(--text-secondary);
+            cursor: pointer;
+            border-radius: 100px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .theme-btn.active, .lang-btn.active {
+            background: var(--accent-gradient);
+            color: white;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            padding: 4rem 0 6rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 80%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(59,130,246,0.1) 0%, transparent 70%);
+            z-index: -1;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 2.5rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.875rem 2rem;
+            border-radius: 100px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--accent-gradient);
+            color: white;
+            box-shadow: 0 10px 20px -5px rgba(59, 130, 246, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 20px 30px -5px rgba(59, 130, 246, 0.4);
+        }
+
+        .btn-secondary {
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            border: 1px solid var(--card-border);
+        }
+
+        .btn-secondary:hover {
+            background: var(--bg-primary);
+            transform: translateY(-2px);
+        }
+
+        .btn-discord {
+            background: #5865F2;
+            color: white;
+        }
+
+        .btn-discord:hover {
+            background: #4752c4;
+            transform: translateY(-2px);
+        }
+
+        /* ===== DOWNLOAD SECTION ===== */
+        .download-section {
+            padding: 4rem 0;
+            background: var(--bg-secondary);
+            border-radius: 2rem;
+            margin: 2rem 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 1rem;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+        }
+
+        .os-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: var(--accent-gradient);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 100px;
+            margin: 0 auto 3rem;
+            width: fit-content;
+            font-weight: 500;
+            box-shadow: 0 10px 20px -5px rgba(59, 130, 246, 0.3);
+        }
+
+        .download-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .download-card {
+            background: var(--card-bg);
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            border: 1px solid var(--card-border);
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .download-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--hover-shadow);
+        }
+
+        .download-card.recommended {
+            border: 2px solid var(--accent-1);
+            background: linear-gradient(135deg, var(--card-bg), rgba(59,130,246,0.05));
+        }
+
+        .recommended-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--accent-gradient);
+            color: white;
+            padding: 0.25rem 1rem;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-header i {
+            font-size: 2rem;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .card-header h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        .card-body {
+            margin-bottom: 1.5rem;
+        }
+
+        .file-name {
+            font-family: monospace;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+            word-break: break-all;
+        }
+
+        .file-size {
+            color: var(--accent-1);
+            font-weight: 600;
+        }
+
+        .download-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            width: 100%;
+            padding: 0.875rem;
+            background: var(--accent-gradient);
+            color: white;
+            text-decoration: none;
+            border-radius: 100px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .download-link:hover {
+            gap: 1rem;
+            box-shadow: 0 10px 20px -5px rgba(59, 130, 246, 0.3);
+        }
+
+        .other-versions {
+            text-align: center;
+        }
+
+        .other-versions a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.3s;
+        }
+
+        .other-versions a:hover {
+            color: var(--accent-1);
+        }
+
+        /* ===== FEATURES SECTION ===== */
+        .features {
+            padding: 4rem 0;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            border-radius: 1.5rem;
+            padding: 2rem;
+            text-align: center;
+            border: 1px solid var(--card-border);
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: var(--hover-shadow);
+        }
+
+        .feature-card i {
+            font-size: 2.5rem;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card p {
+            color: var(--text-secondary);
+        }
+
+        /* ===== HOW IT WORKS ===== */
+        .how-it-works {
+            padding: 4rem 0;
+            background: var(--bg-secondary);
+            border-radius: 2rem;
+            margin: 2rem 0;
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .step {
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            width: 3rem;
+            height: 3rem;
+            background: var(--accent-gradient);
+            color: white;
+            border-radius: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            margin: 0 auto 1.5rem;
+        }
+
+        /* ===== CODE BLOCK ===== */
+        .quick-start {
+            padding: 4rem 0;
+        }
+
+        .code-block {
+            background: var(--code-bg);
+            border-radius: 1.5rem;
+            padding: 2rem;
+            margin-top: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .code-block::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--accent-gradient);
+        }
+
+        .code-block pre {
+            margin: 0;
+            color: #e2e8f0;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9rem;
+            line-height: 1.8;
+            overflow-x: auto;
+        }
+
+        .code-block code {
+            color: #e2e8f0;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--bg-secondary);
+            padding: 3rem 0;
+            border-top: 1px solid var(--card-border);
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            font-size: 1.25rem;
+            transition: all 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-1);
+            transform: translateY(-2px);
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .hero-content {
+            animation: fadeInUp 1s ease;
+        }
+
+        .feature-card {
+            animation: fadeInUp 0.8s ease;
+            animation-fill-mode: both;
+        }
+
+        .feature-card:nth-child(1) { animation-delay: 0.1s; }
+        .feature-card:nth-child(2) { animation-delay: 0.2s; }
+        .feature-card:nth-child(3) { animation-delay: 0.3s; }
+        .feature-card:nth-child(4) { animation-delay: 0.4s; }
+
+        .download-card {
+            animation: fadeInUp 0.8s ease;
+            animation-fill-mode: both;
+        }
+
+        .download-card:nth-child(1) { animation-delay: 0.1s; }
+        .download-card:nth-child(2) { animation-delay: 0.2s; }
+        .download-card:nth-child(3) { animation-delay: 0.3s; }
+        .download-card:nth-child(4) { animation-delay: 0.4s; }
+        .download-card:nth-child(5) { animation-delay: 0.5s; }
+        .download-card:nth-child(6) { animation-delay: 0.6s; }
+
+        .btn:hover i {
+            animation: float 1s ease infinite;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Header with navigation and controls -->
     <header>
-        <nav class="navbar">
-            <div class="nav-brand">
-                <i class="fas fa-robot"></i>
-                <span>TinyAI</span>
-            </div>
-            
-            <div class="nav-controls">
-                <!-- Language Toggle -->
-                <div class="language-toggle">
-                    <button id="lang-en" class="lang-btn active" data-lang="en">
-                        <i class="fas fa-language"></i> EN
-                    </button>
-                    <button id="lang-vi" class="lang-btn" data-lang="vi">
-                        <i class="fas fa-language"></i> VI
-                    </button>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-robot"></i>
+                    <span>TinyAI</span>
                 </div>
                 
-                <!-- Theme Toggle -->
-                <button id="theme-toggle" class="theme-btn">
-                    <i class="fas fa-moon"></i>
-                    <i class="fas fa-sun"></i>
-                </button>
+                <div class="controls">
+                    <div class="theme-toggle">
+                        <button class="theme-btn active" onclick="setTheme('light')">
+                            <i class="fas fa-sun"></i>
+                        </button>
+                        <button class="theme-btn" onclick="setTheme('dark')">
+                            <i class="fas fa-moon"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="lang-toggle">
+                        <button class="lang-btn active" onclick="setLanguage('en')">EN</button>
+                        <button class="lang-btn" onclick="setLanguage('vi')">VI</button>
+                    </div>
+                </div>
             </div>
-        </nav>
+        </div>
     </header>
 
-    <!-- Main Content -->
     <main>
         <!-- Hero Section -->
         <section class="hero">
             <div class="container">
                 <div class="hero-content">
-                    <h1 id="hero-title">🤖 TinyAI</h1>
-                    <p id="hero-subtitle" class="subtitle">
+                    <h1 class="i18n" data-en="🤖 TinyAI" data-vi="🤖 TinyAI">🤖 TinyAI</h1>
+                    <p class="i18n" data-en="A lightweight, rule-based AI written in C# for learning purposes" 
+                       data-vi="Một AI đơn giản dựa trên luật lệ, viết bằng C# cho mục đích học tập">
                         A lightweight, rule-based AI written in C# for learning purposes
                     </p>
                     
-                    <!-- Quick Actions -->
-                    <div class="quick-actions">
+                    <div class="hero-buttons">
                         <a href="https://github.com/realmg51-cpu/TinyAI" target="_blank" class="btn btn-primary">
-                            <i class="fab fa-github"></i> <span data-i18n="view_github">View on GitHub</span>
+                            <i class="fab fa-github"></i>
+                            <span class="i18n" data-en="View on GitHub" data-vi="Xem trên GitHub">View on GitHub</span>
                         </a>
-                        <a hre" target="_blank" class="btn btn-discord">
-                            <i class="fab fa-discord"></i> <span data-i18n="join_discord">Join Discord</span>
+                        <a href="https://discord.gg/your-link" target="_blank" class="btn btn-discord">
+                            <i class="fab fa-discord"></i>
+                            <span class="i18n" data-en="Join Discord" data-vi="Tham gia Discord">Join Discord</span>
                         </a>
-                        <a href="https://github.com/realmg51-cpu/TinyAI/releases" target="_blank" class="btn btn-outline">
-                            <i class="fas fa-download"></i> <span data-i18n="all_releases">All Releases</span>
+                        <a href="#download" class="btn btn-secondary">
+                            <i class="fas fa-download"></i>
+                            <span class="i18n" data-en="Download" data-vi="Tải xuống">Download</span>
                         </a>
                     </div>
                 </div>
@@ -65,190 +656,211 @@
         </section>
 
         <!-- Download Section -->
-        <section class="download-section">
+        <section id="download" class="download-section">
             <div class="container">
-                <h2 class="section-title" data-i18n="download_title">📥 Download TinyAI v1.2.0</h2>
-                <p class="section-subtitle" data-i18n="download_subtitle">
+                <h2 class="section-title i18n" data-en="📥 Download TinyAI v1.2.0" data-vi="📥 Tải TinyAI v1.2.0">
+                    📥 Download TinyAI v1.2.0
+                </h2>
+                <p class="section-subtitle i18n" data-en="Self-contained executables - No .NET runtime required"
+                   data-vi="Tệp thực thi độc lập - Không cần cài đặt .NET">
                     Self-contained executables - No .NET runtime required
                 </p>
 
-                <!-- OS Detection Banner -->
-                <div class="os-detection" id="os-detection">
+                <!-- OS Detection -->
+                <div class="os-badge" id="os-badge">
                     <i class="fas fa-laptop"></i>
-                    <span id="os-message" data-i18n="detecting_os">Detecting your operating system...</span>
+                    <span id="os-message" class="i18n" data-en="Detecting your system..." data-vi="Đang phát hiện hệ thống...">
+                        Detecting your system...
+                    </span>
                 </div>
 
-                <!-- Download Cards -->
+                <!-- Download Grid -->
                 <div class="download-grid" id="download-grid">
-                    <!-- Windows -->
+                    <!-- Windows x64 -->
                     <div class="download-card" data-os="windows" data-arch="x64">
+                        <div class="recommended-badge" style="display: none;">Recommended</div>
                         <div class="card-header">
                             <i class="fab fa-windows"></i>
-                            <h3>Windows</h3>
-                            <span class="arch-badge">x64</span>
+                            <h3>Windows x64</h3>
                         </div>
                         <div class="card-body">
-                            <p class="file-name">TinyAI-win-x64-v1.2.0.exe</p>
-                            <p class="file-size">65 MB</p>
+                            <div class="file-name">TinyAI-win-x64-v1.2.0.exe</div>
+                            <div class="file-size">65 MB</div>
                         </div>
-                        <div class="card-footer">
-                            <a href="https://github.com/realmg51-cpu/TinyAI/releases/download/v1.2.0/TinyAI-win-x64-v1.2.0.exe" 
-                               class="download-btn" data-version="v1.2.0">
-                                <i class="fas fa-download"></i> <span data-i18n="download">Download</span>
-                            </a>
-                        </div>
+                        <a href="https://github.com/realmg51-cpu/TinyAI/releases/download/v1.2.0/TinyAI-win-x64-v1.2.0.exe" 
+                           class="download-link">
+                            <i class="fas fa-download"></i>
+                            <span class="i18n" data-en="Download" data-vi="Tải xuống">Download</span>
+                        </a>
                     </div>
 
+                    <!-- Windows ARM64 -->
                     <div class="download-card" data-os="windows" data-arch="arm64">
+                        <div class="recommended-badge" style="display: none;">Recommended</div>
                         <div class="card-header">
                             <i class="fab fa-windows"></i>
-                            <h3>Windows</h3>
-                            <span class="arch-badge">ARM64</span>
+                            <h3>Windows ARM64</h3>
                         </div>
                         <div class="card-body">
-                            <p class="file-name">TinyAI-win-arm64-v1.2.0.exe</p>
-                            <p class="file-size">73 MB</p>
+                            <div class="file-name">TinyAI-win-arm64-v1.2.0.exe</div>
+                            <div class="file-size">73 MB</div>
                         </div>
-                        <div class="card-footer">
-                            <a href="https://github.com/realmg51-cpu/TinyAI/releases/download/v1.2.0/TinyAI-win-arm64-v1.2.0.exe" 
-                               class="download-btn" data-version="v1.2.0">
-                                <i class="fas fa-download"></i> <span data-i18n="download">Download</span>
-                            </a>
-                        </div>
+                        <a href="https://github.com/realmg51-cpu/TinyAI/releases/download/v1.2.0/TinyAI-win-arm64-v1.2.0.exe" 
+                           class="download-link">
+                            <i class="fas fa-download"></i> Download
+                        </a>
                     </div>
 
-                    <!-- Linux -->
+                    <!-- Linux x64 -->
                     <div class="download-card" data-os="linux" data-arch="x64">
+                        <div class="recommended-badge" style="display: none;">Recommended</div>
                         <div class="card-header">
                             <i class="fab fa-linux"></i>
-                            <h3>Linux</h3>
-                            <span class="arch-badge">x64</span>
+                            <h3>Linux x64</h3>
                         </div>
                         <div class="card-body">
-                            <p class="file-name">TinyAI-linux-x64-v1.2.0</p>
-                            <p class="file-size">64 MB</p>
+                            <div class="file-name">TinyAI-linux-x64-v1.2.0</div>
+                            <div class="file-size">64 MB</div>
                         </div>
-                        <div class="card-footer">
-                            <a href="https://github.com/realmg51-cpu/TinyAI/releases/download/v1.2.0/TinyAI-linux-x64-v1.2.0" 
-                               class="download-btn" data-version="v1.2.0">
-                                <i class="fas fa-download"></i> <span data-i18n="download">Download</span>
-                            </a>
-                        </div>
+                        <a href="https://github.com/realmg51-cpu/TinyAI/releases/download/v1.2.0/TinyAI-linux-x64-v1.2.0" 
+                           class="download-link">
+                            <i class="fas fa-download"></i> Download
+                        </a>
                     </div>
 
+                    <!-- Linux ARM64 -->
                     <div class="download-card" data-os="linux" data-arch="arm64">
+                        <div class="recommended-badge" style="display: none;">Recommended</div>
                         <div class="card-header">
                             <i class="fab fa-linux"></i>
-                            <h3>Linux</h3>
-                            <span class="arch-badge">ARM64</span>
+                            <h3>Linux ARM64</h3>
                         </div>
                         <div class="card-body">
-                            <p class="file-name">TinyAI-linux-arm64-v1.2.0</p>
-                            <p class="file-size">71 MB</p>
+                            <div class="file-name">TinyAI-linux-arm64-v1.2.0</div>
+                            <div class="file-size">71 MB</div>
                         </div>
-                        <div class="card-footer">
-                            <a href="https://github.com/realmg51-cpu/TinyAI/releases/download/v1.2.0/TinyAI-linux-arm64-v1.2.0" 
-                               class="download-btn" data-version="v1.2.0">
-                                <i class="fas fa-download"></i> <span data-i18n="download">Download</span>
-                            </a>
-                        </div>
+                        <a href="https://github.com/realmg51-cpu/TinyAI/releases/download/v1.2.0/TinyAI-linux-arm64-v1.2.0" 
+                           class="download-link">
+                            <i class="fas fa-download"></i> Download
+                        </a>
                     </div>
 
-                    <!-- macOS -->
+                    <!-- macOS Intel -->
                     <div class="download-card" data-os="macos" data-arch="x64">
+                        <div class="recommended-badge" style="display: none;">Recommended</div>
                         <div class="card-header">
                             <i class="fab fa-apple"></i>
-                            <h3>macOS</h3>
-                            <span class="arch-badge">Intel</span>
+                            <h3>macOS Intel</h3>
                         </div>
                         <div class="card-body">
-                            <p class="file-name">TinyAI-osx-x64-v1.2.0</p>
-                            <p class="file-size">64 MB</p>
+                            <div class="file-name">TinyAI-osx-x64-v1.2.0</div>
+                            <div class="file-size">64 MB</div>
                         </div>
-                        <div class="card-footer">
-                            <a href="https://github.com/realmg51-cpu/TinyAI/releases/download/v1.2.0/TinyAI-osx-x64-v1.2.0" 
-                               class="download-btn" data-version="v1.2.0">
-                                <i class="fas fa-download"></i> <span data-i18n="download">Download</span>
-                            </a>
-                        </div>
+                        <a href="https://github.com/realmg51-cpu/TinyAI/releases/download/v1.2.0/TinyAI-osx-x64-v1.2.0" 
+                           class="download-link">
+                            <i class="fas fa-download"></i> Download
+                        </a>
                     </div>
 
+                    <!-- macOS Apple Silicon -->
                     <div class="download-card" data-os="macos" data-arch="arm64">
+                        <div class="recommended-badge" style="display: none;">Recommended</div>
                         <div class="card-header">
                             <i class="fab fa-apple"></i>
-                            <h3>macOS</h3>
-                            <span class="arch-badge">Apple Silicon</span>
+                            <h3>macOS Apple Silicon</h3>
                         </div>
                         <div class="card-body">
-                            <p class="file-name">TinyAI-osx-arm64-v1.2.0</p>
-                            <p class="file-size">71 MB</p>
+                            <div class="file-name">TinyAI-osx-arm64-v1.2.0</div>
+                            <div class="file-size">71 MB</div>
                         </div>
-                        <div class="card-footer">
-                            <a href="https://github.com/realmg51-cpu/TinyAI/releases/download/v1.2.0/TinyAI-osx-arm64-v1.2.0" 
-                               class="download-btn" data-version="v1.2.0">
-                                <i class="fas fa-download"></i> <span data-i18n="download">Download</span>
-                            </a>
-                        </div>
+                        <a href="https://github.com/realmg51-cpu/TinyAI/releases/download/v1.2.0/TinyAI-osx-arm64-v1.2.0" 
+                           class="download-link">
+                            <i class="fas fa-download"></i> Download
+                        </a>
                     </div>
                 </div>
 
-                <!-- Other Versions Link -->
                 <div class="other-versions">
                     <a href="https://github.com/realmg51-cpu/TinyAI/releases" target="_blank">
-                        <i class="fas fa-history"></i> <span data-i18n="other_versions">View other versions (v1.1.0, v1.0.1, v1.0.0)</span>
+                        <i class="fas fa-history"></i>
+                        <span class="i18n" data-en="View all versions (v1.1.0, v1.0.1, v1.0.0)" 
+                              data-vi="Xem tất cả phiên bản (v1.1.0, v1.0.1, v1.0.0)">
+                            View all versions (v1.1.0, v1.0.1, v1.0.0)
+                        </span>
                     </a>
                 </div>
             </div>
         </section>
 
-        <!-- Features Section -->
+        <!-- Features -->
         <section class="features">
             <div class="container">
-                <h2 class="section-title" data-i18n="features_title">✨ Features</h2>
+                <h2 class="section-title i18n" data-en="✨ Features" data-vi="✨ Tính năng">✨ Features</h2>
                 <div class="features-grid">
                     <div class="feature-card">
                         <i class="fas fa-brain"></i>
-                        <h3 data-i18n="feature1_title">Rule-Based AI</h3>
-                        <p data-i18n="feature1_desc">Simple pattern matching with predefined rules for learning AI concepts</p>
+                        <h3 class="i18n" data-en="Rule-Based AI" data-vi="AI dựa trên luật">Rule-Based AI</h3>
+                        <p class="i18n" data-en="Simple pattern matching with predefined rules"
+                           data-vi="So khớp mẫu đơn giản với các luật có sẵn">
+                            Simple pattern matching with predefined rules
+                        </p>
                     </div>
                     <div class="feature-card">
                         <i class="fas fa-code"></i>
-                        <h3 data-i18n="feature2_title">Written in C#</h3>
-                        <p data-i18n="feature2_desc">Clean, educational code to help you understand AI fundamentals</p>
+                        <h3 class="i18n" data-en="Written in C#" data-vi="Viết bằng C#">Written in C#</h3>
+                        <p class="i18n" data-en="Clean, educational code for learning"
+                           data-vi="Mã nguồn sạch, dễ học">
+                            Clean, educational code for learning
+                        </p>
                     </div>
                     <div class="feature-card">
                         <i class="fas fa-docker"></i>
-                        <h3 data-i18n="feature3_title">Docker Support</h3>
-                        <p data-i18n="feature3_desc">Easy deployment with Docker containers for any platform</p>
+                        <h3 class="i18n" data-en="Docker Support" data-vi="Hỗ trợ Docker">Docker Support</h3>
+                        <p class="i18n" data-en="Easy deployment with Docker"
+                           data-vi="Triển khai dễ dàng với Docker">
+                            Easy deployment with Docker
+                        </p>
                     </div>
                     <div class="feature-card">
                         <i class="fas fa-puzzle-piece"></i>
-                        <h3 data-i18n="feature4_title">Extendable</h3>
-                        <p data-i18n="feature4_desc">Add your own rules and patterns to customize the AI behavior</p>
+                        <h3 class="i18n" data-en="Extendable" data-vi="Có thể mở rộng">Extendable</h3>
+                        <p class="i18n" data-en="Add your own rules and patterns"
+                           data-vi="Thêm luật và mẫu của riêng bạn">
+                            Add your own rules and patterns
+                        </p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- How It Works -->
+        <!-- How it works -->
         <section class="how-it-works">
             <div class="container">
-                <h2 class="section-title" data-i18n="howitworks_title">💡 How It Works</h2>
+                <h2 class="section-title i18n" data-en="💡 How It Works" data-vi="💡 Cách hoạt động">💡 How It Works</h2>
                 <div class="steps">
                     <div class="step">
                         <div class="step-number">1</div>
-                        <h3 data-i18n="step1_title">Pattern Matching</h3>
-                        <p data-i18n="step1_desc">Input is processed and matched against predefined patterns</p>
+                        <h3 class="i18n" data-en="Pattern Matching" data-vi="So khớp mẫu">Pattern Matching</h3>
+                        <p class="i18n" data-en="Input is matched against predefined patterns"
+                           data-vi="Đầu vào được so khớp với các mẫu có sẵn">
+                            Input is matched against predefined patterns
+                        </p>
                     </div>
                     <div class="step">
                         <div class="step-number">2</div>
-                        <h3 data-i18n="step2_title">Rule Application</h3>
-                        <p data-i18n="step2_desc">Responses are triggered based on matching rules</p>
+                        <h3 class="i18n" data-en="Rule Application" data-vi="Áp dụng luật">Rule Application</h3>
+                        <p class="i18n" data-en="Responses triggered by matching rules"
+                           data-vi="Phản hồi dựa trên các luật phù hợp">
+                            Responses triggered by matching rules
+                        </p>
                     </div>
                     <div class="step">
                         <div class="step-number">3</div>
-                        <h3 data-i18n="step3_title">Easy Extension</h3>
-                        <p data-i18n="step3_desc">The system can be extended by adding new rules</p>
+                        <h3 class="i18n" data-en="Easy Extension" data-vi="Mở rộng dễ dàng">Easy Extension</h3>
+                        <p class="i18n" data-en="Add new rules to customize behavior"
+                           data-vi="Thêm luật mới để tùy chỉnh">
+                            Add new rules to customize behavior
+                        </p>
                     </div>
                 </div>
             </div>
@@ -257,9 +869,9 @@
         <!-- Quick Start -->
         <section class="quick-start">
             <div class="container">
-                <h2 class="section-title" data-i18n="quickstart_title">🚀 Quick Start</h2>
+                <h2 class="section-title i18n" data-en="🚀 Quick Start" data-vi="🚀 Bắt đầu nhanh">🚀 Quick Start</h2>
                 <div class="code-block">
-                    <pre><code id="quickstart-code"># Clone the repository
+                    <pre><code># Clone the repository
 git clone https://github.com/realmg51-cpu/TinyAI.git
 
 # Navigate to directory
@@ -280,21 +892,123 @@ docker run --rm tinyai</code></pre>
         </section>
     </main>
 
-    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-content">
-                <div class="footer-info">
-                    <p>© 2026 TinyAI - <span data-i18n="license">Apache 2.0 License</span></p>
+                <div class="copyright">
+                    © 2026 TinyAI - 
+                    <span class="i18n" data-en="Apache 2.0 License" data-vi="Giấy phép Apache 2.0">
+                        Apache 2.0 License
+                    </span>
                 </div>
                 <div class="footer-links">
                     <a href="https://github.com/realmg51-cpu/TinyAI" target="_blank"><i class="fab fa-github"></i></a>
-                    <a href="Discord link https://discord.gg/4D8fxxRDR" target="_blank"><i class="fab fa-discord"></i></a>
+                    <a href="https://discord.gg/wbBCZkenT" target="_blank"><i class="fab fa-discord"></i></a>
                 </div>
             </div>
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        // Theme management
+        function setTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+            
+            // Update active button
+            document.querySelectorAll('.theme-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector(`.theme-btn[onclick="setTheme('${theme}')"]`).classList.add('active');
+        }
+
+        // Language management
+        function setLanguage(lang) {
+            // Update active button
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector(`.lang-btn[onclick="setLanguage('${lang}')"]`).classList.add('active');
+            
+            // Update all translatable elements
+            document.querySelectorAll('.i18n').forEach(el => {
+                if (el.dataset[lang]) {
+                    if (el.children.length === 0) {
+                        el.textContent = el.dataset[lang];
+                    } else {
+                        // For elements with children (like buttons with icons), update only text nodes
+                        const textNode = Array.from(el.childNodes).find(node => node.nodeType === 3);
+                        if (textNode) {
+                            textNode.textContent = el.dataset[lang];
+                        }
+                    }
+                }
+            });
+            
+            localStorage.setItem('language', lang);
+        }
+
+        // OS Detection
+        function detectOS() {
+            const userAgent = navigator.userAgent;
+            const platform = navigator.platform;
+            
+            if (/Windows/.test(userAgent)) return 'windows';
+            if (/Mac/.test(platform)) return 'macos';
+            if (/Linux/.test(platform)) return 'linux';
+            return 'unknown';
+        }
+
+        function detectArch() {
+            const userAgent = navigator.userAgent;
+            if (/arm|aarch64|Apple Silicon/.test(userAgent)) return 'arm64';
+            return 'x64';
+        }
+
+        // Highlight recommended download
+        function highlightRecommended() {
+            const os = detectOS();
+            const arch = detectArch();
+            const osMessage = document.getElementById('os-message');
+            
+            // Update OS message
+            const messages = {
+                windows: { en: '✓ Windows detected - Showing recommended download', vi: '✓ Đã phát hiện Windows' },
+                macos: { en: '✓ macOS detected - Showing recommended download', vi: '✓ Đã phát hiện macOS' },
+                linux: { en: '✓ Linux detected - Showing recommended download', vi: '✓ Đã phát hiện Linux' },
+                unknown: { en: 'ℹ️ Select your system manually', vi: 'ℹ️ Chọn hệ thống của bạn' }
+            };
+            
+            const currentLang = document.querySelector('.lang-btn.active')?.textContent.toLowerCase() || 'en';
+            osMessage.textContent = messages[os][currentLang];
+            
+            // Hide all recommended badges first
+            document.querySelectorAll('.recommended-badge').forEach(badge => {
+                badge.style.display = 'none';
+            });
+            
+            // Show recommended for matching OS and arch
+            if (os !== 'unknown') {
+                document.querySelectorAll(`.download-card[data-os="${os}"][data-arch="${arch}"]`).forEach(card => {
+                    const badge = card.querySelector('.recommended-badge');
+                    if (badge) badge.style.display = 'block';
+                });
+            }
+        }
+
+        // Load saved preferences
+        document.addEventListener('DOMContentLoaded', () => {
+            // Load theme
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            setTheme(savedTheme);
+            
+            // Load language
+            const savedLang = localStorage.getItem('language') || 'en';
+            setLanguage(savedLang);
+            
+            // Detect OS and highlight
+            highlightRecommended();
+        });
+    </script>
 </body>
 </html>
