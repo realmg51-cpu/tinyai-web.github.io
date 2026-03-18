@@ -30,6 +30,9 @@
             --accent-1: #3b82f6;
             --accent-2: #8b5cf6;
             --accent-3: #ec4899;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --error: #ef4444;
         }
 
         [data-theme="dark"] {
@@ -64,6 +67,52 @@
             max-width: 1280px;
             margin: 0 auto;
             padding: 0 2rem;
+        }
+
+        /* Loading Spinner */
+        .loading-spinner {
+            display: inline-block;
+            width: 1rem;
+            height: 1rem;
+            border: 2px solid var(--text-light);
+            border-radius: 50%;
+            border-top-color: var(--accent-1);
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Notification */
+        .notification {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            padding: 1rem 1.5rem;
+            background: var(--card-bg);
+            border-radius: 1rem;
+            box-shadow: var(--card-shadow);
+            border-left: 4px solid var(--accent-1);
+            transform: translateX(400px);
+            transition: transform 0.3s ease;
+            z-index: 1000;
+        }
+
+        .notification.show {
+            transform: translateX(0);
+        }
+
+        .notification.success {
+            border-left-color: var(--success);
+        }
+
+        .notification.error {
+            border-left-color: var(--error);
+        }
+
+        .notification.warning {
+            border-left-color: var(--warning);
         }
 
         /* ===== HEADER ===== */
@@ -260,6 +309,34 @@
             box-shadow: 0 10px 20px -5px rgba(59, 130, 246, 0.3);
         }
 
+        .arch-details {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .arch-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: var(--bg-primary);
+            border-radius: 100px;
+            border: 1px solid var(--card-border);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .arch-badge i {
+            color: var(--accent-1);
+        }
+
+        .arch-badge strong {
+            color: var(--text-primary);
+        }
+
         .download-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -280,13 +357,6 @@
             animation-fill-mode: both;
         }
 
-        .download-card:nth-child(1) { animation-delay: 0.1s; }
-        .download-card:nth-child(2) { animation-delay: 0.2s; }
-        .download-card:nth-child(3) { animation-delay: 0.3s; }
-        .download-card:nth-child(4) { animation-delay: 0.4s; }
-        .download-card:nth-child(5) { animation-delay: 0.5s; }
-        .download-card:nth-child(6) { animation-delay: 0.6s; }
-
         .download-card:hover {
             transform: translateY(-5px);
             box-shadow: var(--hover-shadow);
@@ -295,6 +365,15 @@
         .download-card.recommended {
             border: 2px solid var(--accent-1);
             background: linear-gradient(135deg, var(--card-bg), rgba(59,130,246,0.05));
+        }
+
+        .download-card.loading {
+            opacity: 0.7;
+            pointer-events: none;
+        }
+
+        .download-card.loading .download-link {
+            background: var(--text-light);
         }
 
         .recommended-badge {
@@ -309,6 +388,7 @@
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            z-index: 1;
         }
 
         .card-header {
@@ -367,8 +447,48 @@
             box-shadow: 0 10px 20px -5px rgba(59, 130, 246, 0.3);
         }
 
+        .download-link.disabled {
+            background: var(--text-light);
+            pointer-events: none;
+            opacity: 0.6;
+        }
+
+        .version-info {
+            text-align: center;
+            margin-top: 2rem;
+            padding: 1rem;
+            background: var(--bg-primary);
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .version-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: var(--bg-gradient);
+            color: white;
+            border-radius: 100px;
+            font-weight: 600;
+        }
+
+        .version-tag i {
+            font-size: 0.9rem;
+        }
+
+        .release-date {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
         .other-versions {
             text-align: center;
+            margin-top: 2rem;
         }
 
         .other-versions a {
@@ -407,11 +527,6 @@
             animation: fadeInUp 0.8s ease;
             animation-fill-mode: both;
         }
-
-        .feature-card:nth-child(1) { animation-delay: 0.1s; }
-        .feature-card:nth-child(2) { animation-delay: 0.2s; }
-        .feature-card:nth-child(3) { animation-delay: 0.3s; }
-        .feature-card:nth-child(4) { animation-delay: 0.4s; }
 
         .feature-card:hover {
             transform: translateY(-5px) scale(1.02);
@@ -455,10 +570,6 @@
             animation: fadeInUp 0.8s ease;
             animation-fill-mode: both;
         }
-
-        .step:nth-child(1) { animation-delay: 0.1s; }
-        .step:nth-child(2) { animation-delay: 0.2s; }
-        .step:nth-child(3) { animation-delay: 0.3s; }
 
         .step-number {
             width: 3rem;
@@ -576,11 +687,11 @@
         }
 
         /* Syntax Highlight Colors */
-        .code-block .command { color: #50fa7b; }      /* Xanh lá - lệnh */
-        .code-block .comment { color: #94a3b8; font-style: italic; }  /* Xám - comment */
-        .code-block .path { color: #8be9fd; text-decoration: underline; }  /* Xanh dương - đường dẫn */
-        .code-block .string { color: #f1fa8c; }       /* Vàng - string */
-        .code-block .number { color: #bd93f9; }       /* Tím - số */
+        .code-block .command { color: #50fa7b; }
+        .code-block .comment { color: #94a3b8; font-style: italic; }
+        .code-block .path { color: #8be9fd; text-decoration: underline; }
+        .code-block .string { color: #f1fa8c; }
+        .code-block .number { color: #bd93f9; }
 
         /* ===== FOOTER ===== */
         footer {
@@ -653,6 +764,11 @@
             .code-block pre {
                 font-size: 0.8rem;
             }
+
+            .version-info {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
         }
     </style>
 </head>
@@ -684,6 +800,11 @@
         </div>
     </header>
 
+    <!-- Notification -->
+    <div id="notification" class="notification">
+        <span id="notification-message"></span>
+    </div>
+
     <main>
         <!-- Hero Section -->
         <section class="hero">
@@ -712,15 +833,15 @@
         <!-- Download Section -->
         <section id="download" class="download-section">
             <div class="container">
-                <h2 class="section-title i18n" data-en="📥 Download TinyAI v1.2.0" data-vi="📥 Tải TinyAI v1.2.0">
-                    📥 Download TinyAI v1.2.0
+                <h2 class="section-title">
+                    <span class="i18n" data-en="📥 Download TinyAI" data-vi="📥 Tải TinyAI">📥 Download TinyAI</span>
+                    <span id="latest-version" class="version-tag">
+                        <i class="fas fa-tag"></i>
+                        <span>v1.2.0</span>
+                    </span>
                 </h2>
-                <p class="section-subtitle i18n" data-en="Self-contained executables - No .NET runtime required"
-                   data-vi="Tệp thực thi độc lập - Không cần cài đặt .NET">
-                    Self-contained executables - No .NET runtime required
-                </p>
-
-                <!-- OS Detection -->
+                
+                <!-- OS và Architecture Detection -->
                 <div class="os-badge" id="os-badge">
                     <i class="fas fa-laptop"></i>
                     <span id="os-message" class="i18n" data-en="Detecting your system..." data-vi="Đang phát hiện hệ thống...">
@@ -728,118 +849,37 @@
                     </span>
                 </div>
 
+                <div class="arch-details" id="arch-details">
+                    <span class="arch-badge">
+                        <i class="fas fa-microchip"></i>
+                        <span class="i18n" data-en="Architecture:" data-vi="Kiến trúc:">Architecture:</span>
+                        <strong id="arch-value">x64</strong>
+                    </span>
+                    <span class="arch-badge">
+                        <i class="fas fa-globe"></i>
+                        <span class="i18n" data-en="Detected:" data-vi="Đã phát hiện:">Detected:</span>
+                        <strong id="os-value">Windows</strong>
+                    </span>
+                </div>
+
+                <!-- Release Info -->
+                <div id="release-info" class="version-info">
+                    <span class="loading-spinner"></span>
+                    <span class="i18n" data-en="Fetching latest release..." data-vi="Đang lấy phiên bản mới nhất...">
+                        Fetching latest release...
+                    </span>
+                </div>
+
                 <!-- Download Grid -->
                 <div class="download-grid" id="download-grid">
-                    <!-- Windows x64 -->
-                    <div class="download-card" data-os="windows" data-arch="x64">
-                        <div class="recommended-badge" style="display: none;">Recommended</div>
-                        <div class="card-header">
-                            <i class="fab fa-windows"></i>
-                            <h3>Windows x64</h3>
-                        </div>
-                        <div class="card-body">
-                            <div class="file-name">TinyAI-win-x64-v1.2.0.exe</div>
-                            <div class="file-size">65 MB</div>
-                        </div>
-                        <a href="https://github.com/realmg51-cpu/TinyAI/releases/download/v1.2.0/TinyAI-win-x64-v1.2.0.exe" 
-                           class="download-link">
-                            <i class="fas fa-download"></i>
-                            <span class="i18n" data-en="Download" data-vi="Tải xuống">Download</span>
-                        </a>
-                    </div>
-
-                    <!-- Windows ARM64 -->
-                    <div class="download-card" data-os="windows" data-arch="arm64">
-                        <div class="recommended-badge" style="display: none;">Recommended</div>
-                        <div class="card-header">
-                            <i class="fab fa-windows"></i>
-                            <h3>Windows ARM64</h3>
-                        </div>
-                        <div class="card-body">
-                            <div class="file-name">TinyAI-win-arm64-v1.2.0.exe</div>
-                            <div class="file-size">73 MB</div>
-                        </div>
-                        <a href="https://github.com/realmg51-cpu/TinyAI/releases/download/v1.2.0/TinyAI-win-arm64-v1.2.0.exe" 
-                           class="download-link">
-                            <i class="fas fa-download"></i> Download
-                        </a>
-                    </div>
-
-                    <!-- Linux x64 -->
-                    <div class="download-card" data-os="linux" data-arch="x64">
-                        <div class="recommended-badge" style="display: none;">Recommended</div>
-                        <div class="card-header">
-                            <i class="fab fa-linux"></i>
-                            <h3>Linux x64</h3>
-                        </div>
-                        <div class="card-body">
-                            <div class="file-name">TinyAI-linux-x64-v1.2.0</div>
-                            <div class="file-size">64 MB</div>
-                        </div>
-                        <a href="https://github.com/realmg51-cpu/TinyAI/releases/download/v1.2.0/TinyAI-linux-x64-v1.2.0" 
-                           class="download-link">
-                            <i class="fas fa-download"></i> Download
-                        </a>
-                    </div>
-
-                    <!-- Linux ARM64 -->
-                    <div class="download-card" data-os="linux" data-arch="arm64">
-                        <div class="recommended-badge" style="display: none;">Recommended</div>
-                        <div class="card-header">
-                            <i class="fab fa-linux"></i>
-                            <h3>Linux ARM64</h3>
-                        </div>
-                        <div class="card-body">
-                            <div class="file-name">TinyAI-linux-arm64-v1.2.0</div>
-                            <div class="file-size">71 MB</div>
-                        </div>
-                        <a href="https://github.com/realmg51-cpu/TinyAI/releases/download/v1.2.0/TinyAI-linux-arm64-v1.2.0" 
-                           class="download-link">
-                            <i class="fas fa-download"></i> Download
-                        </a>
-                    </div>
-
-                    <!-- macOS Intel -->
-                    <div class="download-card" data-os="macos" data-arch="x64">
-                        <div class="recommended-badge" style="display: none;">Recommended</div>
-                        <div class="card-header">
-                            <i class="fab fa-apple"></i>
-                            <h3>macOS Intel</h3>
-                        </div>
-                        <div class="card-body">
-                            <div class="file-name">TinyAI-osx-x64-v1.2.0</div>
-                            <div class="file-size">64 MB</div>
-                        </div>
-                        <a href="https://github.com/realmg51-cpu/TinyAI/releases/download/v1.2.0/TinyAI-osx-x64-v1.2.0" 
-                           class="download-link">
-                            <i class="fas fa-download"></i> Download
-                        </a>
-                    </div>
-
-                    <!-- macOS Apple Silicon -->
-                    <div class="download-card" data-os="macos" data-arch="arm64">
-                        <div class="recommended-badge" style="display: none;">Recommended</div>
-                        <div class="card-header">
-                            <i class="fab fa-apple"></i>
-                            <h3>macOS Apple Silicon</h3>
-                        </div>
-                        <div class="card-body">
-                            <div class="file-name">TinyAI-osx-arm64-v1.2.0</div>
-                            <div class="file-size">71 MB</div>
-                        </div>
-                        <a href="https://github.com/realmg51-cpu/TinyAI/releases/download/v1.2.0/TinyAI-osx-arm64-v1.2.0" 
-                           class="download-link">
-                            <i class="fas fa-download"></i> Download
-                        </a>
-                    </div>
+                    <!-- Cards sẽ được tạo động bằng JavaScript -->
                 </div>
 
                 <div class="other-versions">
-                    <a href="https://github.com/realmg51-cpu/TinyAI/releases" target="_blank">
+                    <a href="https://github.com/realmg51-cpu/TinyAI/releases" target="_blank" id="all-releases-link">
                         <i class="fas fa-history"></i>
-                        <span class="i18n" data-en="View all versions (v1.1.0, v1.0.1, v1.0.0)" 
-                              data-vi="Xem tất cả phiên bản (v1.1.0, v1.0.1, v1.0.0)">
-                            View all versions (v1.1.0, v1.0.1, v1.0.0)
+                        <span class="i18n" data-en="View all versions" data-vi="Xem tất cả phiên bản">
+                            View all versions
                         </span>
                     </a>
                 </div>
@@ -973,6 +1013,296 @@
     </footer>
 
     <script>
+        // ===== CONFIGURATION =====
+        const GITHUB_REPO = 'realmg51-cpu/TinyAI';
+        const GITHUB_API = `https://api.github.com/repos/${GITHUB_REPO}/releases/latest`;
+
+        // ===== NOTIFICATION SYSTEM =====
+        function showNotification(message, type = 'info') {
+            const notification = document.getElementById('notification');
+            const messageEl = document.getElementById('notification-message');
+            
+            notification.className = `notification ${type}`;
+            messageEl.textContent = message;
+            notification.classList.add('show');
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+
+        // ===== DEEP ARCHITECTURE SCANNING =====
+        async function scanArchitecture() {
+            const ua = navigator.userAgent;
+            const platform = navigator.platform;
+            
+            // Phát hiện OS chi tiết
+            let os = 'unknown';
+            let osVersion = '';
+            let arch = 'x64';
+            
+            // Windows
+            if (/Windows/.test(ua)) {
+                os = 'windows';
+                if (/Windows NT 10/.test(ua)) osVersion = '10/11';
+                else if (/Windows NT 6.3/.test(ua)) osVersion = '8.1';
+                else if (/Windows NT 6.2/.test(ua)) osVersion = '8';
+                else if (/Windows NT 6.1/.test(ua)) osVersion = '7';
+            }
+            // macOS
+            else if (/Mac/.test(platform)) {
+                os = 'macos';
+                if (/Mac OS X 10_15/.test(ua)) osVersion = 'Catalina (10.15)';
+                else if (/Mac OS X 11/.test(ua)) osVersion = 'Big Sur (11)';
+                else if (/Mac OS X 12/.test(ua)) osVersion = 'Monterey (12)';
+                else if (/Mac OS X 13/.test(ua)) osVersion = 'Ventura (13)';
+                else if (/Mac OS X 14/.test(ua)) osVersion = 'Sonoma (14)';
+                else if (/Mac OS X 15/.test(ua)) osVersion = 'Sequoia (15)';
+            }
+            // Linux
+            else if (/Linux/.test(platform)) {
+                os = 'linux';
+                if (/Android/.test(ua)) {
+                    os = 'android';
+                    const androidVersion = ua.match(/Android (\d+)/);
+                    if (androidVersion) osVersion = androidVersion[1];
+                }
+            }
+            
+            // Phát hiện kiến trúc CPU chi tiết
+            if (/ARM|aarch64|Apple Silicon/.test(ua)) {
+                arch = 'arm64';
+                if (/Apple Silicon|Mac OS X/.test(ua)) {
+                    osVersion += ' (Apple Silicon)';
+                }
+            } else if (/x64|Win64|x86_64/.test(ua)) {
+                arch = 'x64';
+            } else if (/Intel|i686|x86/.test(ua)) {
+                // Kiểm tra xem có hỗ trợ 64-bit không
+                if (navigator.maxTouchPoints > 0 || /WOW64/.test(ua)) {
+                    arch = 'x64';
+                } else {
+                    arch = 'x86';
+                }
+            }
+            
+            // Kiểm tra WebAssembly cho kiến trúc 64-bit
+            try {
+                const wasm = new WebAssembly.Memory({ initial: 1 });
+                if (wasm.buffer.byteLength === 65536) {
+                    // WebAssembly hoạt động - có thể là 64-bit
+                }
+            } catch (e) {
+                console.log('WebAssembly not supported');
+            }
+            
+            return { os, arch, osVersion };
+        }
+
+        // ===== FETCH LATEST RELEASE FROM GITHUB =====
+        async function fetchLatestRelease() {
+            const releaseInfo = document.getElementById('release-info');
+            
+            try {
+                const response = await fetch(GITHUB_API);
+                if (!response.ok) throw new Error('Failed to fetch release');
+                
+                const release = await response.json();
+                
+                // Cập nhật version
+                document.getElementById('latest-version').innerHTML = `
+                    <i class="fas fa-tag"></i>
+                    <span>${release.tag_name}</span>
+                `;
+                
+                // Parse release date
+                const releaseDate = new Date(release.published_at);
+                const formattedDate = releaseDate.toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                });
+                
+                // Cập nhật release info
+                releaseInfo.innerHTML = `
+                    <span class="version-tag">
+                        <i class="fas fa-rocket"></i>
+                        ${release.tag_name}
+                    </span>
+                    <span class="release-date">
+                        <i class="far fa-calendar-alt"></i>
+                        ${formattedDate}
+                    </span>
+                    <a href="${release.html_url}" target="_blank" class="btn btn-secondary" style="padding: 0.5rem 1rem;">
+                        <i class="fas fa-external-link-alt"></i>
+                        <span class="i18n" data-en="Release Notes" data-vi="Ghi chú phát hành">Release Notes</span>
+                    </a>
+                `;
+                
+                return release;
+            } catch (error) {
+                console.error('Error fetching release:', error);
+                releaseInfo.innerHTML = `
+                    <span class="error">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <span class="i18n" data-en="Failed to fetch latest release" data-vi="Không thể lấy phiên bản mới nhất">
+                            Failed to fetch latest release
+                        </span>
+                    </span>
+                `;
+                showNotification('Failed to fetch latest release', 'error');
+                return null;
+            }
+        }
+
+        // ===== PARSE ASSETS FROM RELEASE =====
+        function parseAssets(release) {
+            if (!release || !release.assets) return [];
+            
+            const osMap = {
+                'win': 'windows',
+                'windows': 'windows',
+                'linux': 'linux',
+                'osx': 'macos',
+                'mac': 'macos'
+            };
+            
+            const archMap = {
+                'x64': 'x64',
+                'x86': 'x86',
+                'arm64': 'arm64',
+                'arm': 'arm64'
+            };
+            
+            return release.assets.map(asset => {
+                const name = asset.name.toLowerCase();
+                let os = 'unknown';
+                let arch = 'x64';
+                
+                // Detect OS
+                for (const [key, value] of Object.entries(osMap)) {
+                    if (name.includes(key)) {
+                        os = value;
+                        break;
+                    }
+                }
+                
+                // Detect architecture
+                for (const [key, value] of Object.entries(archMap)) {
+                    if (name.includes(key)) {
+                        arch = value;
+                        break;
+                    }
+                }
+                
+                // Calculate size in MB
+                const sizeInMB = (asset.size / (1024 * 1024)).toFixed(1);
+                
+                return {
+                    name: asset.name,
+                    size: `${sizeInMB} MB`,
+                    url: asset.browser_download_url,
+                    os,
+                    arch,
+                    isExecutable: !name.endsWith('.sha256') && !name.endsWith('.md5')
+                };
+            }).filter(asset => asset.isExecutable);
+        }
+
+        // ===== RENDER DOWNLOAD CARDS =====
+        function renderDownloadCards(assets) {
+            const grid = document.getElementById('download-grid');
+            const { os: userOS, arch: userArch } = scanArchitecture();
+            
+            // OS icons
+            const osIcons = {
+                windows: 'fab fa-windows',
+                linux: 'fab fa-linux',
+                macos: 'fab fa-apple'
+            };
+            
+            // OS display names
+            const osNames = {
+                windows: 'Windows',
+                linux: 'Linux',
+                macos: 'macOS'
+            };
+            
+            grid.innerHTML = assets.map((asset, index) => {
+                const isRecommended = asset.os === userOS && asset.arch === userArch;
+                const animationDelay = index * 0.1;
+                
+                return `
+                    <div class="download-card ${isRecommended ? 'recommended' : ''}" 
+                         data-os="${asset.os}" 
+                         data-arch="${asset.arch}"
+                         style="animation-delay: ${animationDelay}s">
+                        ${isRecommended ? '<div class="recommended-badge">Recommended</div>' : ''}
+                        <div class="card-header">
+                            <i class="${osIcons[asset.os] || 'fas fa-download'}"></i>
+                            <h3>${osNames[asset.os] || asset.os} ${asset.arch}</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="file-name">${asset.name}</div>
+                            <div class="file-size">${asset.size}</div>
+                        </div>
+                        <a href="${asset.url}" class="download-link">
+                            <i class="fas fa-download"></i>
+                            <span class="i18n" data-en="Download" data-vi="Tải xuống">Download</span>
+                        </a>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // ===== UPDATE UI WITH DETECTED SYSTEM =====
+        function updateSystemInfo() {
+            const { os, arch, osVersion } = scanArchitecture();
+            const osMessage = document.getElementById('os-message');
+            const osValue = document.getElementById('os-value');
+            const archValue = document.getElementById('arch-value');
+            const currentLang = document.querySelector('.lang-btn.active')?.textContent.toLowerCase() || 'en';
+            
+            const osNames = {
+                windows: { en: 'Windows', vi: 'Windows' },
+                macos: { en: 'macOS', vi: 'macOS' },
+                linux: { en: 'Linux', vi: 'Linux' },
+                android: { en: 'Android', vi: 'Android' },
+                unknown: { en: 'Unknown', vi: 'Không xác định' }
+            };
+            
+            const messages = {
+                windows: { 
+                    en: `✓ Windows${osVersion ? ' ' + osVersion : ''} detected`, 
+                    vi: `✓ Đã phát hiện Windows${osVersion ? ' ' + osVersion : ''}` 
+                },
+                macos: { 
+                    en: `✓ macOS${osVersion ? ' ' + osVersion : ''} detected`, 
+                    vi: `✓ Đã phát hiện macOS${osVersion ? ' ' + osVersion : ''}` 
+                },
+                linux: { 
+                    en: `✓ Linux${osVersion ? ' ' + osVersion : ''} detected`, 
+                    vi: `✓ Đã phát hiện Linux${osVersion ? ' ' + osVersion : ''}` 
+                },
+                android: { 
+                    en: `📱 Android${osVersion ? ' ' + osVersion : ''} detected - Download for PC later`, 
+                    vi: `📱 Đang dùng Android${osVersion ? ' ' + osVersion : ''} - Tải về máy tính sau nhé` 
+                },
+                unknown: { 
+                    en: 'ℹ️ Select your system manually', 
+                    vi: 'ℹ️ Chọn hệ thống của bạn' 
+                }
+            };
+            
+            osMessage.textContent = messages[os][currentLang];
+            osValue.textContent = osNames[os][currentLang];
+            archValue.textContent = arch;
+            
+            if (osVersion) {
+                osMessage.textContent += ` (${osVersion})`;
+            }
+        }
+
         // ===== THEME MANAGEMENT =====
         function setTheme(theme) {
             document.documentElement.setAttribute('data-theme', theme);
@@ -981,7 +1311,7 @@
             document.querySelectorAll('.theme-btn').forEach(btn => {
                 btn.classList.remove('active');
             });
-            document.querySelector(`.theme-btn[onclick="setTheme('${theme}')"]`).classList.add('active');
+            document.querySelector(`.theme-btn[onclick="setTheme('${theme}')"]`).classList.add('theme');
         }
 
         // ===== LANGUAGE MANAGEMENT =====
@@ -991,26 +1321,34 @@
                 'Download': 'Download',
                 'Copy': 'Copy',
                 'View on GitHub': 'View on GitHub',
-                'Download TinyAI v1.2.0': '📥 Download TinyAI v1.2.0',
                 'Self-contained executables - No .NET runtime required': 'Self-contained executables - No .NET runtime required',
-                'View all versions (v1.1.0, v1.0.1, v1.0.0)': 'View all versions (v1.1.0, v1.0.1, v1.0.0)',
+                'View all versions': 'View all versions',
                 '✨ Features': '✨ Features',
                 '💡 How It Works': '💡 How It Works',
                 '🚀 Quick Start': '🚀 Quick Start',
-                'Apache 2.0 License': 'Apache 2.0 License'
+                'Apache 2.0 License': 'Apache 2.0 License',
+                'Architecture:': 'Architecture:',
+                'Detected:': 'Detected:',
+                'Fetching latest release...': 'Fetching latest release...',
+                'Release Notes': 'Release Notes',
+                'Failed to fetch latest release': 'Failed to fetch latest release'
             },
             vi: {
                 'Detecting your system...': 'Đang phát hiện hệ thống...',
                 'Download': 'Tải xuống',
                 'Copy': 'Sao chép',
                 'View on GitHub': 'Xem trên GitHub',
-                'Download TinyAI v1.2.0': '📥 Tải TinyAI v1.2.0',
                 'Self-contained executables - No .NET runtime required': 'Tệp thực thi độc lập - Không cần cài đặt .NET',
-                'View all versions (v1.1.0, v1.0.1, v1.0.0)': 'Xem tất cả phiên bản (v1.1.0, v1.0.1, v1.0.0)',
+                'View all versions': 'Xem tất cả phiên bản',
                 '✨ Features': '✨ Tính năng',
                 '💡 How It Works': '💡 Cách hoạt động',
                 '🚀 Quick Start': '🚀 Bắt đầu nhanh',
-                'Apache 2.0 License': 'Giấy phép Apache 2.0'
+                'Apache 2.0 License': 'Giấy phép Apache 2.0',
+                'Architecture:': 'Kiến trúc:',
+                'Detected:': 'Đã phát hiện:',
+                'Fetching latest release...': 'Đang lấy phiên bản mới nhất...',
+                'Release Notes': 'Ghi chú phát hành',
+                'Failed to fetch latest release': 'Không thể lấy phiên bản mới nhất'
             }
         };
 
@@ -1020,6 +1358,7 @@
             });
             document.querySelector(`.lang-btn[onclick="setLanguage('${lang}')"]`).classList.add('active');
             
+            // Update i18n elements
             document.querySelectorAll('.i18n').forEach(el => {
                 const key = el.getAttribute(`data-${lang}`);
                 if (key) {
@@ -1032,67 +1371,10 @@
                 }
             });
             
-            // Update OS message
-            const osMsg = document.getElementById('os-message');
-            if (osMsg) {
-                const os = detectOS();
-                const messages = {
-                    windows: { en: '✓ Windows detected', vi: '✓ Đã phát hiện Windows' },
-                    macos: { en: '✓ macOS detected', vi: '✓ Đã phát hiện macOS' },
-                    linux: { en: '✓ Linux detected', vi: '✓ Đã phát hiện Linux' },
-                    android: { en: '📱 Android detected - Download for PC later', vi: '📱 Đang dùng Android - Tải về máy tính sau nhé' },
-                    unknown: { en: 'ℹ️ Select your system manually', vi: 'ℹ️ Chọn hệ thống của bạn' }
-                };
-                osMsg.textContent = messages[os][lang];
-            }
+            // Update system info with new language
+            updateSystemInfo();
             
             localStorage.setItem('language', lang);
-        }
-
-        // ===== OS DETECTION =====
-        function detectOS() {
-            const userAgent = navigator.userAgent;
-            const platform = navigator.platform;
-            
-            if (/Windows/.test(userAgent)) return 'windows';
-            if (/Mac/.test(platform)) return 'macos';
-            if (/Android/.test(userAgent)) return 'android';
-            if (/Linux/.test(platform)) return 'linux';
-            return 'unknown';
-        }
-
-        function detectArch() {
-            const userAgent = navigator.userAgent;
-            if (/arm|aarch64|Apple Silicon/.test(userAgent)) return 'arm64';
-            return 'x64';
-        }
-
-        function highlightRecommended() {
-            const os = detectOS();
-            const arch = detectArch();
-            const osMessage = document.getElementById('os-message');
-            const currentLang = document.querySelector('.lang-btn.active')?.textContent.toLowerCase() || 'en';
-            
-            const messages = {
-                windows: { en: '✓ Windows detected', vi: '✓ Đã phát hiện Windows' },
-                macos: { en: '✓ macOS detected', vi: '✓ Đã phát hiện macOS' },
-                linux: { en: '✓ Linux detected', vi: '✓ Đã phát hiện Linux' },
-                android: { en: '📱 Android detected - Download for PC later', vi: '📱 Đang dùng Android - Tải về máy tính sau nhé' },
-                unknown: { en: 'ℹ️ Select your system manually', vi: 'ℹ️ Chọn hệ thống của bạn' }
-            };
-            
-            osMessage.textContent = messages[os][currentLang];
-            
-            document.querySelectorAll('.recommended-badge').forEach(badge => {
-                badge.style.display = 'none';
-            });
-            
-            if (os !== 'unknown' && os !== 'android') {
-                document.querySelectorAll(`.download-card[data-os="${os}"][data-arch="${arch}"]`).forEach(card => {
-                    const badge = card.querySelector('.recommended-badge');
-                    if (badge) badge.style.display = 'block';
-                });
-            }
         }
 
         // ===== COPY CODE FUNCTION =====
@@ -1100,10 +1382,26 @@
             const codeBlock = button.closest('.code-block').querySelector('code');
             const text = codeBlock.innerText;
             
+            // Fallback for older browsers
+            if (!navigator.clipboard) {
+                const textArea = document.createElement('textarea');
+                textArea.value = text;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                
+                showNotification('Copied to clipboard!', 'success');
+                return;
+            }
+            
+            // Modern clipboard API
             navigator.clipboard.writeText(text).then(() => {
                 const originalText = button.innerHTML;
                 button.innerHTML = '<i class="fas fa-check"></i> Copied!';
                 button.classList.add('copied');
+                
+                showNotification('Copied to clipboard!', 'success');
                 
                 setTimeout(() => {
                     button.innerHTML = originalText;
@@ -1111,12 +1409,28 @@
                 }, 2000);
             }).catch(err => {
                 console.error('Failed to copy:', err);
-                alert('Failed to copy code');
+                showNotification('Failed to copy code', 'error');
+            });
+        }
+
+        // ===== SMOOTH SCROLL =====
+        function setupSmoothScroll() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
             });
         }
 
         // ===== INITIALIZE =====
-        document.addEventListener('DOMContentLoaded', () => {
+        document.addEventListener('DOMContentLoaded', async () => {
             // Load saved theme
             const savedTheme = localStorage.getItem('theme') || 'light';
             setTheme(savedTheme);
@@ -1125,8 +1439,23 @@
             const savedLang = localStorage.getItem('language') || 'en';
             setLanguage(savedLang);
             
-            // Detect OS and highlight
-            highlightRecommended();
+            // Setup smooth scroll
+            setupSmoothScroll();
+            
+            // Update system info
+            updateSystemInfo();
+            
+            // Fetch latest release from GitHub
+            const release = await fetchLatestRelease();
+            if (release) {
+                const assets = parseAssets(release);
+                renderDownloadCards(assets);
+            }
+            
+            // Add resize listener for responsive
+            window.addEventListener('resize', () => {
+                // Re-render if needed
+            });
         });
     </script>
 </body>
